@@ -1,23 +1,18 @@
----
-auth: [
-{ title: "Login",          name: "login",          type: "text",        placeholder: "Login"},
-{ title: "Password",       name: "password",       type: "password",    placeholder: "Password"}]
----
 <html>
     <head>
         <link rel="stylesheet" href="login.sass"/>
     </head>
     <body>
         <main class="login-page">
+            <h1 class="login-header">MONOCHROME</h1>
             <form class="login-form">
-                <h3>Monochrome</h3>
-                <label for="login">Login</label>
-                <input type="text" placeholder="Email or Phone" id="login">
-                <label for="password">Password</label>
-                <input type="password" placeholder="Password" id="password">
-                <button>Sign In</button>
-                <button>Create account</button>
+                <div class="login-input">
+                    <input type="text" placeholder="login" id="login">
+                    <input type="password" placeholder="password" id="password">
+                </div>
             </form>
+        <button>Sign In</button>
+        <button>Create account</button>
         </main>
     </body>
 </html>
