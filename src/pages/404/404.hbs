@@ -1,15 +1,13 @@
-<html lang="">
-<head>
-    <link rel="stylesheet" href="./404.sass"/>
-</head>
-<body>
-<main class="error-page">
-    <h1 class="error-header">MONOCHROME</h1>
-    <div class="error-description">
-       <p id="number">404<p>
-       <p id="description">Страница не найдена</p>
+{{>layout}}
+<main class="nf__data">
+    {{>logo}}
+    <img class="nf__image" src="../../../static/img/cat_err.png" />
+    <div class="nf-page__header">
+       <span class="nf__nf">404</span>
+       <p>Ничего не найдено</p>
+        <br/>
+
+       <a class="link-to-chats" href="http://localhost:1234/">Назад к чатам</a>
     </div>
-    <a class="link-to-chats" href="http://localhost:1234/">Назад к чатам</a>
 </main>
-</body>
-</html>
+

@@ -1,19 +1,13 @@
-<html lang="">
-<head>
-    <link rel="stylesheet" href="./login.sass"/>
-</head>
-<body>
-    <main class="login-page">
-        <h1 class="login-header">MONOCHROME</h1>
-        <h1 class="login-enter">Вход</h1>
-        <form class="login-form">
-            <div class="login-input">
-                <input type="text" placeholder="логин" id="login">
-                <input type="password" placeholder="пароль" id="password">
-            </div>
-        </form>
-        {{>button button_name="АВТОРИЗОВАТЬСЯ"}}
-        {{>button button_name="зарегистрироваться" added_class="btn-register"}}
-    </main>
-</body>
-</html>
+{{>layout}}
+<main>
+    {{>logo}}
+    <h1 class="page__enter">Вход</h1>
+    <form class="login-page__form">
+        <div class="login-page__input-form">
+            <input type="text" placeholder="логин" class="login-page__input">
+            <input type="password" placeholder="пароль" class="login-page__input">
+        </div>
+    </form>
+    {{>button button_title="АВТОРИЗОВАТЬСЯ" add_class="login-page__auth-button"}}
+    {{>button button_title="зарегистрироваться" add_class="login-page__reg-button"}}
+</main>

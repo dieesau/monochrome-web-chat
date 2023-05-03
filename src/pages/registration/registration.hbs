@@ -1,24 +1,19 @@
-<html lang="">
-<head>
-    <link rel="stylesheet" href="./registration.sass"/>
-</head>
-<body>
-<main class="login-page">
-    <h1 class="login-header">MONOCHROME</h1>
-    <h1 class="login-enter">Регистрация</h1>
-    <form class="login-form">
-        <div class="login-input">
-            <input type="email" placeholder="почта" id="email">
-            <input type="text" placeholder="логин" id="login">
-            <input type="text" placeholder="имя" id="name">
-            <input type="text" placeholder="фамилия" id="surname">
-            <input type="text" placeholder="телефон" id="number">
-            <input type="password" placeholder="пароль" id="password">
-            <input type="password" placeholder="пароль (еще раз)" id="password">
+{{>layout}}
+<main>
+    {{>logo}}
+    <h1 class="page__enter">Регистрация</h1>
+    <form class="register-page__form">
+        <div class="register-input">
+            <input type="email" placeholder="почта">
+            <input type="text" placeholder="логин">
+            <input type="text" placeholder="имя">
+            <input type="text" placeholder="фамилия">
+            <input type="text" placeholder="телефон">
+            <input type="password" placeholder="пароль">
+            <input type="password" placeholder="пароль (еще раз)">
         </div>
     </form>
-    <button class="button btn-authorize">СОЗДАТЬ АККАУНТ</button>
-    <button class="button btn-register">войти</button>
+    {{>button button_title="СОЗДАТЬ АККАУНТ" add_class="register-page__create-btn"}}
+    {{>button button_title="войти" add_class="register-page__sign-btn"}}
 </main>
-</body>
-</html>
+
