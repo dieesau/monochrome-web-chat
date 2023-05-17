@@ -1,13 +1,13 @@
-{{>layout}}
+{{>main}}
 <main>
-    {{>logo}}
-    <h1 class="page__enter">Вход</h1>
-    <form class="login-page__form">
-        <div class="login-page__input-form">
-            <input type="text" placeholder="логин" class="login-page__input">
-            <input type="password" placeholder="пароль" class="login-page__input">
+    {{>logo/logo}}
+    <h1 class="page__header">Вход</h1>
+    <form class="page__form-container">
+        <div class="page__input-form">
+            {{>input/input type="text" name="login" placeholder="логин" add_class="page__input-big"}}
+            {{>input/input type="password" name="password" placeholder="пароль" add_class="page__input-big"}}
         </div>
     </form>
-    {{>button button_title="АВТОРИЗОВАТЬСЯ" add_class="login-page__auth-button"}}
-    {{>button button_title="зарегистрироваться" add_class="login-page__reg-button"}}
+    {{>button/button button_title="ВОЙТИ" add_class="btn-big" type="submit"}}
+    {{>button/button button_title="зарегистрироваться" add_class="btn-medium" type="button"}}
 </main>

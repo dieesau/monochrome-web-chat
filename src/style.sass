@@ -1,24 +1,90 @@
+$primary-color-light: #FFFFFF
+$primary-color-dark: #151515
+$form-container-light: #F2F2F2
+
 @import "normalize.css"
 
 @import "./src/partials/logo/logo.sass"
 @import "../src/partials/button/button.sass"
 
-@import "./src/pages/login/login.sass"
-@import "./src/pages/registration/registration.sass"
-@import "./src/pages/500/500.sass"
-@import "./src/pages/404/404.sass"
-
+@import "./src/pages/register/register.sass"
+@import "./src/pages/profile/profile.sass"
+@import "./src/pages/chats/chats.sass"
+@import "./src/pages/change_personal_data/change_personal_data"
 
 
 html
   background-color: #151515
 
-.page__enter
+.page__header
   text-align: center
-  padding-top: 50px
-  color: #FFFFFF
-  font-size: 64px
+  padding-top: 2%
+  color: $primary-color-light
+  font-size: 3em
   font-family: 'Inter', sans
   font-style: normal
   font-weight: 400
   line-height: 77px
+
+.page__form-container
+  /* Контейенер формы */
+  display: flex
+  flex-direction: column
+  margin: 2% auto 4%
+  padding-bottom: 5%
+  background: $form-container-light
+  border-radius: 3%
+  width: 48%
+  align-items: center
+
+.page__input-form
+  display: flex
+  flex-direction: column
+  margin-top: 3%
+  width: 60%
+
+.page__input-big
+  height: 1em
+  padding: 11% 0 9% 11%
+  background: $form-container-light
+  box-sizing: border-box
+  font-size: 2.5em
+  border: none
+  border-bottom: .05em solid black
+
+.page__input-small
+  height: 0.8em
+  padding: 4% 0 5% 3%
+  background: $form-container-light
+  box-sizing: border-box
+  font-size: 1.2em
+  border: none
+  border-bottom: .08em solid black
+
+.span_err
+  font-size: 64px
+  color: $primary-color-light
+
+.err_description
+  font-size: 64px
+  color: $primary-color-light
+
+.err__data
+  text-align: center
+
+.err__image
+  max-width: 600px
+  height: auto
+
+.page__header
+  padding: 10px
+  font-size: 50px
+  color: $primary-color-light
+
+.link-to-chats
+  display: inline-block
+  line-height: 35px
+  text-decoration: none
+  border-bottom: 1px solid
+  font-size: 36px
+  color: #898989
