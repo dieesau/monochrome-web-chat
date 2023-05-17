@@ -1,0 +1,18 @@
+{{>main}}
+<main>
+    {{>logo/logo}}
+    <h1 class="page__header">Регистрация</h1>
+    <form class="register-page__form-container">
+        <div class="page__input-form">
+            {{>input/input type="email" name="email" placeholder="email" add_class="page__input-small"}}
+            {{>input/input type="text" name="login" placeholder="логин" add_class="page__input-small"}}
+            {{>input/input type="text" name="first_name" placeholder="имя" add_class="page__input-small"}}
+            {{>input/input type="text" name="second_name" placeholder="фамилия" add_class="page__input-small"}}
+            {{>input/input type="text" name="phone" placeholder="телефон" add_class="page__input-small"}}
+            {{>input/input type="password" name="password" placeholder="пароль" add_class="page__input-small"}}
+            {{>input/input type="password" name="password" placeholder="пароль (еще раз)" add_class="page__input-small"}}
+        </div>
+    </form>
+    {{>button/button button_title="ЗАРЕГИСТРИРОВАТЬСЯ" add_class="btn-big" type="submit"}}
+    {{>button/button button_title="войти" add_class="btn-medium" type="button"}}
+</main>
