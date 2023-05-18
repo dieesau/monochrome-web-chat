@@ -6,13 +6,18 @@
     "clean": "rimraf ./dist/ && rimraf ./.parcel-cache/",
     "dev": "npm run clean && parcel --no-cache src/index.hbs",
     "build": "npm run clean && parcel build src/index.hbs",
-    "start": "npm run clean && parcel build src/index.hbs && node ./server.js"
+    "start": "npm run clean && parcel build src/index.hbs && node server/server.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
-    "parcel": "^2.8.3"
+    "eslint": "^8.40.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "parcel": "^2.8.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
   },
   "dependencies": {
     "@parcel/transformer-sass": "^2.8.3",
