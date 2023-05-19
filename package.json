@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "clean": "rimraf ./dist/ && rimraf ./.parcel-cache/",
+    "lint": "eslint ./src",
     "dev": "npm run clean && parcel --no-cache src/index.hbs",
     "build": "npm run clean && parcel build src/index.hbs",
     "start": "npm run clean && parcel build src/index.hbs && node server/server.js"
@@ -12,10 +13,12 @@
   "license": "ISC",
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.59.6",
+    "@typescript-eslint/parser": "^5.59.6",
     "eslint": "^8.40.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.27.5",
     "parcel": "^2.8.3",
+    "stylelint": "^15.6.2",
+    "stylelint-config-sass-guidelines": "^10.0.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
   },
