@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "clean": "rimraf ./dist/ && rimraf ./.parcel-cache/",
-    "lint": "eslint ./src",
+    "eslint": "eslint ./src",
+    "stylelint": "stylelint ./src --fix",
     "dev": "npm run clean && parcel --no-cache src/index.hbs",
     "build": "npm run clean && parcel build src/index.hbs",
     "start": "npm run clean && parcel build src/index.hbs && node server/server.js"
@@ -25,6 +26,7 @@
   "dependencies": {
     "@parcel/transformer-sass": "^2.8.3",
     "express": "^4.18.2",
-    "handlebars": "^4.7.7"
+    "handlebars": "^4.7.7",
+    "nanoid": "^4.0.2"
   }
 }
