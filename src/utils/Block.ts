@@ -16,7 +16,7 @@ class Block<P extends Record<string, any> = any> {
     private eventBus: () => EventBus
     private _element: HTMLElement | null = null
 
-    constructor(propsWithChildren: P) {
+    constructor(propsWithChildren: { src: any; alt: string }) {
         const eventBus = new EventBus()
 
         const { props, children } = this._getChildrenAndProps(propsWithChildren)
@@ -179,7 +179,7 @@ class Block<P extends Record<string, any> = any> {
         return new DocumentFragment()
     }
 
-    getContent() {
+    public getContent() {
         return this.element
     }
 
