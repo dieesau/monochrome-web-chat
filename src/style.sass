@@ -4,14 +4,6 @@ $form-container-light: #F2F2F2
 
 @import "normalize.css"
 
-@import "../src/partials/button/button.sass"
-
-@import "./src/pages/register/register.sass"
-@import "./src/pages/profile/profile.sass"
-@import "./src/pages/chats/chats.sass"
-@import "./src/pages/change_personal_data/change_personal_data"
-
-
 html
   background-color: #151515
 
@@ -95,3 +87,140 @@ html
   font-family: 'Inter', sans
   font-style: normal
   font-weight: bold
+
+.register-page__form-container
+  margin: 2% auto 2%
+  padding-bottom: 2%
+  background: $form-container-light
+  border-radius: 3%
+  width: 48%
+  flex-direction: column
+  display: flex
+  align-items: center
+
+.setting_container_avatar
+  justify-content: center
+  align-items: center
+  margin: 2% auto
+  width: 12em
+  height: 12em
+  border: .3em solid #515151
+  overflow: hidden
+  display: flex
+
+.setting_avatar
+  overflow: hidden
+
+.profile-data
+  display: flex
+  flex-direction: column
+  margin: 2% auto 2%
+  padding-bottom: 2%
+  background: #282828
+  border-radius: 3%
+  width: 48%
+  align-items: center
+
+  h1
+    color: #D9D9D9
+    margin-top: 1%
+    margin-bottom: 0
+
+.profile-data-label
+  display: flex
+  justify-content: space-between
+  margin-top: 3%
+  padding-bottom: 1%
+  padding-left: 1%
+  width: 60%
+  border-bottom: 1px solid #D9D9D9
+
+.label
+  font-weight: 400
+  font-size: 1em
+  color: #D9D9D9
+
+.button
+  background: #000000
+  border: 0.05em solid $primary-color-light
+  margin: auto auto 1%
+  display: flex
+  justify-content: center
+  color: $primary-color-light
+  box-sizing: border-box
+  align-items: center
+  font-family: 'Inter'
+  font-style: normal
+  font-weight: 400
+
+.btn-big
+  width: 30%
+  height: 2em
+  font-size: 2.5em
+
+.btn-medium
+  width: 20%
+  height: 2em
+  font-size: 2em
+
+.page-chat
+  display: flex
+  justify-content: space-between
+
+.all-chats
+  border: $primary-color-light solid
+  width: 25%
+  height: 95vh
+  margin-left: 2%
+  margin-top: 2%
+
+.current-chat
+  border: $primary-color-light solid
+  width: 68%
+  height: 95vh
+  margin-right: 2%
+  margin-top: 2%
+
+.current-chat__header
+  display: flex
+  justify-content: space-between
+
+.button-chat
+  margin-top: 1%
+  margin-left: 1%
+  margin-right: 1%
+  width: 200px
+  height: 35px
+  background: #757575
+  border-radius: 3px
+  padding-top: 5px
+  text-align: center
+  color: $primary-color-light
+  font-size: 18px
+  line-height: normal
+  text-decoration: none
+  box-sizing: border-box
+  border: 1px solid #000000
+  font-style: normal
+  font-weight: 700
+
+.setting_container_avatar
+  label
+    display: flex
+    overflow: hidden
+  img
+    cursor: pointer
+
+#avatar
+  display: none
+
+.change-page__form-container
+  margin: 2% auto 2%
+  padding-bottom: 2%
+  background: $form-container-light
+  border-radius: 3%
+  width: 48%
+  flex-direction: column
+  display: flex
+  align-items: center
+
