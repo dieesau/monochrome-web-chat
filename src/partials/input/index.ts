@@ -6,6 +6,10 @@ interface InputProps {
     name: string;
     placeholder: string;
     add_class?: string;
+    events?: {
+        blur?: () => void,
+        focus?: () => void,
+    }
 }
 
 export class Input extends Block<InputProps> {

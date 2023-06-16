@@ -2,6 +2,7 @@ import Block from "../../utils/Block";
 import template from './login.hbs'
 import Input from "../../partials/input";
 import Button from "../../partials/button";
+import {validate} from "../../utils/validation";
 
 export class LoginPage extends Block {
     constructor() {
@@ -16,7 +17,18 @@ export class LoginPage extends Block {
             type: "text",
             name: "login",
             placeholder: "логин",
-            add_class: "page__input-big"
+            add_class: "page__input-big",
+            events: {
+                blur: (e) => {
+                    const loginValue = e.target.value.trim();
+                    const loginValidate = validate(loginValue,
+                        ['req', 'minLen:3', 'maxLen:20', 'noSpaces'])
+                        console.log(`Логин - ${e.target.value}`)
+                    if (!loginValidate.isValid) {
+                        console.log(`Некорректный логин ${loginValidate.failedRule}`)
+                    }
+                }
+            }
         });
 
         this.children.passwordInput = new Input({
