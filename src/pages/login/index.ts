@@ -22,10 +22,11 @@ export class LoginPage extends Block {
                 blur: (e) => {
                     const loginValue = e.target.value.trim();
                     const loginValidate = validate(loginValue,
-                        ['req', 'minLen:3', 'maxLen:20', 'noSpaces'])
-                        console.log(`Логин - ${e.target.value}`)
+                        ['req', 'minLen:3', 'maxLen:20', 'noSpaces', 'noSpecChar'])
                     if (!loginValidate.isValid) {
-                        console.log(`Некорректный логин ${loginValidate.failedRule}`)
+                        console.log(loginValidate.message)
+                    } else {
+                        console.log(`Логин - ${e.target.value}`)
                     }
                 }
             }
@@ -35,7 +36,19 @@ export class LoginPage extends Block {
             type: "password",
             name: "password",
             placeholder: "пароль",
-            add_class: "page__input-big"
+            add_class: "page__input-big",
+            events: {
+                blur: (e) => {
+                    const passwordValue = e.target.value.trim();
+                    const passwordValidate = validate(passwordValue,
+                        ['req', 'oneUpperReq', 'oneDigitReq'])
+                    if (!passwordValidate.isValid) {
+                        console.log(`Некорректный логин ${passwordValidate.failedRule}`)
+                    } else {
+                        console.log(`Пароль - ${e.target.value}`)
+                    }
+        }
+            }
         });
 
         this.children.loginBtn = new Button({
