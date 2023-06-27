@@ -4,7 +4,7 @@ import Input from "../../partials/input";
 import Button from "../../partials/button";
 import {validate} from "../../utils/validation";
 
-export class LoginPage extends Block {
+export class Login extends Block {
     constructor() {
           const content = {
               logo: "MONOCHROME"
@@ -81,4 +81,4 @@ export class LoginPage extends Block {
     }
 }
 
-export default LoginPage;
+export default Login;

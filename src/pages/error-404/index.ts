@@ -1,14 +1,14 @@
 import img from '../../../static/img/cat_err.png'
 import Img from "../../partials/img";
 import Block from "../../utils/Block";
-import template from "./500.hbs"
+import template from "./404.hbs"
 
-export class ServErr extends Block {
+export class Error404 extends Block {
     constructor() {
         const content = {
             logo: 'MONOCHROME',
-            code: 'Сервис временно недоступен',
-            text: 'Уже чиним',
+            code: '404',
+            text: 'Страница не найдена. Возможно, вы неправильно ввели адрес или страница была перемещена.',
             link: 'Вернуться к чатам'
         }
         super(content);
@@ -27,6 +27,6 @@ export class ServErr extends Block {
     }
 }
 
-export default ServErr;
+export default Error404;
 
 

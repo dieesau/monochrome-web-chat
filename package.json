@@ -1,12 +1,12 @@
 {
-  "name": "native-monochrome-chat",
+  "name": "monochrome",
   "version": "1.0.0",
-  "description": "",
+  "description": "web chat",
   "scripts": {
-    "clean": "rimraf ./dist/ && rimraf ./.parcel-cache/",
-    "eslint": "eslint ./src",
-    "stylelint": "stylelint ./src --fix",
-    "dev": "npm run clean && vite src/index.html",
+    "clean": "rimraf ./dist/",
+    "eslint": "eslint . --fix",
+    "stylelint": "stylelint ./**/*.css --fix",
+    "dev": "vite",
     "build": "npm run clean && vite build",
     "start": "npm run clean && vite build && node server/server.js"
   },

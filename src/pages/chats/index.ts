@@ -1,7 +1,7 @@
 import Block from "../../utils/Block";
 import template from "./chats.hbs"
 
-export class ChatPage extends Block {
+export class Chats extends Block {
     constructor() {
         super({});
     }
@@ -12,4 +12,4 @@ export class ChatPage extends Block {
     }
 }
 
-export default ChatPage;
+export default Chats;

@@ -1,41 +1,46 @@
-import {NotFound} from "./pages/clientError";
 import './style.sass'
-import ServErr from "./pages/serverError";
-import {LoginPage} from "./pages/login";
-import RegPage from "./pages/register";
-import ProfilePage from "./pages/profile";
-import {ChangeData} from "./pages/change_personal_data";
-import ChatPage from "./pages/chats";
+import {Login} from "./pages/login";
+import {Register} from "./pages/register";
+import {Profile} from "./pages/profile";
+import {ChangeData} from "./pages/change-personal-data";
+import {Error404} from "./pages/error-404";
+import {Error500} from "./pages/error-500";
+import {Chats} from "./pages/chats";
 
 window.addEventListener('DOMContentLoaded', () => {
     const root = document.querySelector('#app');
     const path = window.location.pathname;
-    const loginPage = new LoginPage();
-    const signinPage = new RegPage();
-    const profilePage = new ProfilePage();
-    const error500Page = new ServErr();
-    const notFoundPage = new NotFound();
+    const login = new Login();
+    const register = new Register();
+    const profile = new Profile();
+    const changeData = new ChangeData();
+    const error404 = new Error404();
+    const error500 = new Error500();
+    const chats = new Chats();
 
-    const routes = {
-        Login: '/',
-        Profile: '/profile/',
-        Main: '/login/',
-        Signin: '/signin/',
-        ChangeProfile: '/change_profile/',
-        ChangePassword: '/change_password/',
-        Error500: '/error_500/',
-    };
-
-    if (routes.Login.match(path)) {
-        root?.append(loginPage.getContent()!);
-    } else if (routes.Signin.match(path)) {
-        root?.append(signinPage.getContent()!);
-    } else if (routes.Profile.match(path)) {
-        root?.append(profilePage.getContent()!);
-        profilePage.dispatchComponentDidMount();
-    } else if (routes.Error500.match(path)) {
-        root?.append(error500Page.getContent()!);
-    } else {
-        root?.append(notFoundPage.getContent()!);
+    switch (path) {
+        case `/`:
+            root?.append(login.getContent()!);
+            break;
+        case `/register`:
+            root?.append(register.getContent()!);
+            break;
+        case `/profile`:
+            root?.append(profile.getContent()!);
+            break;
+        case `/change-data`:
+            root?.append(changeData.getContent()!);
+            break;
+        case `/error-404`:
+            root?.append(error404.getContent()!);
+            break;
+        case `/error-500`:
+            root?.append(error500.getContent()!);
+            break;
+        case `/chats`:
+            root?.append(chats.getContent()!);
+            break;
+        default:
+            root?.append(error404.getContent()!);
     }
 });

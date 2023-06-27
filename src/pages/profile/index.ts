@@ -5,7 +5,7 @@ import Button from "../../partials/button";
 import Img from "../../partials/img";
 import img from "../../../static/img/cat_err.png";
 
-export class ProfilePage extends Block {
+export class Profile extends Block {
     constructor() {
         super({});
     }
@@ -15,7 +15,7 @@ export class ProfilePage extends Block {
             label_class: "profile-data-label",
             label_data_class: "label",
             label_name_text: "Почта",
-            label_value_text: "clientError@t.clientError"
+            label_value_text: "error-404@t.error-404"
         });
 
         this.children.label2 = new Label({
@@ -95,4 +95,4 @@ export class ProfilePage extends Block {
     }
 }
 
-export default ProfilePage;
+export default Profile;

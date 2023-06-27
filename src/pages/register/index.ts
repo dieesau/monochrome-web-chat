@@ -4,7 +4,7 @@ import Input from "../../partials/input";
 import Button from "../../partials/button";
 import {validate} from "../../utils/validation";
 
-export class RegPage extends Block {
+export class Register extends Block {
     constructor() {
         const content = {
             logo: "MONOCHROME"
@@ -152,4 +152,4 @@ export class RegPage extends Block {
     }
 }
 
-export default RegPage;
+export default Register;
