@@ -42,11 +42,12 @@ export class LoginPage extends Block {
                     const passwordValue = e.target.value.trim();
                     const passwordValidate = validate(passwordValue,
                         ['req', 'oneUpperReq', 'oneDigitReq'])
-                    if (!passwordValidate.isValid) {
-                        console.log(`Некорректный логин ${passwordValidate.failedRule}`)
-                    } else {
-                        console.log(`Пароль - ${e.target.value}`)
-                    }
+                    console.log(`Пароль - ${e.target.value}`)
+                    // if (!passwordValidate.isValid) {
+                    //     console.log(passwordValidate.message)
+                    // } else {
+                    //     console.log(`Пароль - ${e.target.value}`)
+                    // }
         }
             }
         });

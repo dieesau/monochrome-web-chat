@@ -6,26 +6,24 @@
     "clean": "rimraf ./dist/ && rimraf ./.parcel-cache/",
     "eslint": "eslint ./src",
     "stylelint": "stylelint ./src --fix",
-    "dev": "npm run clean && parcel --no-cache src/index.hbs",
-    "build": "npm run clean && parcel build src/index.hbs",
-    "start": "npm run clean && parcel build src/index.hbs && node server/server.js"
+    "dev": "npm run clean && vite src/index.html",
+    "build": "npm run clean && vite build",
+    "start": "npm run clean && vite build && node server/server.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "^1.0.9",
-    "@parcel/transformer-sass": "^2.8.3",
     "@typescript-eslint/eslint-plugin": "^5.59.6",
     "@typescript-eslint/parser": "^5.59.6",
     "eslint": "^8.40.0",
     "express": "^4.18.2",
     "handlebars": "^4.7.7",
     "nanoid": "^4.0.2",
-    "parcel": "^2.8.3",
-    "parcel-transformer-hbs": "^1.0.4",
     "stylelint": "^15.6.2",
     "stylelint-config-sass-guidelines": "^10.0.0",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "vite": "^4.3.9",
+    "vite-plugin-handlebars": "^1.6.0"
   }
 }
