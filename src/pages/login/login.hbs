@@ -1,13 +1,13 @@
-{{>main}}
-<main>
-    {{>logo/logo}}
+<div>
+    <h1 class="logo-monochrome">{{{logo}}}</h1>
     <h1 class="page__header">Вход</h1>
     <form class="page__form-container">
         <div class="page__input-form">
-            {{>input/input type="text" name="login" placeholder="логин" add_class="page__input-big"}}
-            {{>input/input type="password" name="password" placeholder="пароль" add_class="page__input-big"}}
+            <div></div>
+            {{{loginInput}}}
+            {{{passwordInput}}}
         </div>
     </form>
-    {{>button/button button_title="ВОЙТИ" add_class="btn-big" type="submit"}}
-    {{>button/button button_title="зарегистрироваться" add_class="btn-medium" type="button"}}
-</main>
+    {{{loginBtn}}}
+    {{{regBtn}}}
+</div>

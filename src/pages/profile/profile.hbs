@@ -1,49 +1,17 @@
-{{>main}}
-<main>
+<div>
     <div class="setting_container_avatar">
-        <img class="setting_avatar" src="../../../static/img/cat_err.png" alt="Аватар"/>
+        {{{avatarImg}}}
     </div>
     <div class="profile-data">
         <h1>Tropik</h1>
-        {{>label/label
-                label_class="profile-data-label"
-                label_data_class="label"
-                label_name_text="Почта"
-                label_value_text="test@t.test"
-        }}
-        {{>label/label
-                label_class="profile-data-label"
-                label_data_class="label"
-                label_name_text="Логин"
-                label_value_text="Tropik"
-        }}
-        {{>label/label
-                label_class="profile-data-label"
-                label_data_class="label"
-                label_name_text="Имя"
-                label_value_text="Курт"
-        }}
-        {{>label/label
-                label_class="profile-data-label"
-                label_data_class="label"
-                label_name_text="Фамилия"
-                label_value_text="Кобейн"
-        }}
-        {{>label/label
-                label_class="profile-data-label"
-                label_data_class="label"
-                label_name_text="Имя в чате"
-                label_value_text="Tropik"
-        }}
-        {{>label/label
-                label_class="profile-data-label"
-                label_data_class="label"
-                label_name_text="Телефон"
-                label_value_text="+7(999)123-23-21"
-        }}
+        {{{label1}}}
+        {{{label2}}}
+        {{{label3}}}
+        {{{label4}}}
+        {{{label5}}}
+        {{{label6}}}
     </div>
-
-    {{>button/button button_title="ИЗМЕНИТЬ ДАННЫЕ" add_class="btn-big" type="button"}}
-    {{>button/button button_title="ИЗМЕНИТЬ ПАРОЛЬ" add_class="btn-big" type="button"}}
-    {{>button/button button_title="выйти" add_class="btn-medium" type="button"}}
-</main>
+    {{{changeDataButton}}}
+    {{{changePasswordButton}}}
+    {{{logoutButton}}}
+</div>
