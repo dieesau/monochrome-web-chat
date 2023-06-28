@@ -58,7 +58,14 @@ export class Login extends Block {
             type: "submit",
             events: {
                 click: (e) => {
-                    e.preventDefault()
+                    e.preventDefault();
+                    const loginValue = this.children.loginInput.element.value.trim();
+                    const passwordValue = this.children.passwordInput.element.value.trim();
+                    const formData = {
+                        login: loginValue,
+                        password: passwordValue
+                    };
+                    console.log(formData);
                 }
             }
         })

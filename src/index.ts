@@ -6,10 +6,12 @@ import {ChangeData} from "./pages/change-personal-data";
 import {Error404} from "./pages/error-404";
 import {Error500} from "./pages/error-500";
 import {Chats} from "./pages/chats";
-
+import {Home} from "./pages/home"
 window.addEventListener('DOMContentLoaded', () => {
     const root = document.querySelector('#app');
     const path = window.location.pathname;
+
+    const home = new Home()
     const login = new Login();
     const register = new Register();
     const profile = new Profile();
@@ -20,6 +22,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     switch (path) {
         case `/`:
+            root?.append(home.getContent()!);
+            break;
+        case `/login`:
             root?.append(login.getContent()!);
             break;
         case `/register`:

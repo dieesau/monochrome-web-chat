@@ -130,10 +130,27 @@ export class Register extends Block {
             type: "submit",
             events: {
                 click: (e) => {
-                    e.preventDefault()
+                    e.preventDefault();
+                    const emailValue = this.children.mailInput.element.value.trim();
+                    const loginValue = this.children.loginInput.element.value.trim();
+                    const firstNameValue = this.children.firstName.element.value.trim();
+                    const secondNameValue = this.children.secondName.element.value.trim();
+                    const phoneValue = this.children.phoneInput.element.value.trim();
+                    const passwordValue = this.children.passwordInput.element.value.trim();
+                    const passwordAgainValue = this.children.passwordAgain.element.value.trim();
+                    const formData = {
+                        email: emailValue,
+                        login: loginValue,
+                        firstName: firstNameValue,
+                        secondName: secondNameValue,
+                        phone: phoneValue,
+                        password: passwordValue,
+                        passwordAgain: passwordAgainValue
+                    };
+                    console.log(formData);
                 }
             }
-        })
+        });
 
         this.children.regBtn = new Button({
             label: "войти",
