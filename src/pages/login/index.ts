@@ -22,7 +22,7 @@ export class Login extends Block {
                 blur: (e) => {
                     const loginValue = e.target.value.trim();
                     const loginValidate = validate(loginValue,
-                        ['req', 'minLen:3', 'maxLen:20', 'noSpaces', 'noSpecChar'])
+                        ['loginForm'])
                     if (!loginValidate.isValid) {
                         console.log(loginValidate.message)
                     } else {
@@ -41,13 +41,12 @@ export class Login extends Block {
                 blur: (e) => {
                     const passwordValue = e.target.value.trim();
                     const passwordValidate = validate(passwordValue,
-                        ['req', 'oneUpperReq', 'oneDigitReq'])
-                    console.log(`Пароль - ${e.target.value}`)
-                    // if (!passwordValidate.isValid) {
-                    //     console.log(passwordValidate.message)
-                    // } else {
-                    //     console.log(`Пароль - ${e.target.value}`)
-                    // }
+                        ['passwordForm'])
+                    if (!passwordValidate.isValid) {
+                        console.log(passwordValidate.message)
+                    } else {
+                        console.log(`Пароль - ${e.target.value}`)
+                    }
         }
             }
         });

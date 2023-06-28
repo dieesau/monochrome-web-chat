@@ -23,7 +23,7 @@ export class Register extends Block {
                 blur: (e) => {
                     const emailValue = e.target.value.trim();
                     const emailValidate = validate(emailValue,
-                        ['req', 'emailFormat'])
+                        ['emailForm'])
                     if (!emailValidate.isValid) {
                         console.log(emailValidate.message)
                     } else {
@@ -42,7 +42,7 @@ export class Register extends Block {
                 blur: (e) => {
                     const loginValue = e.target.value.trim();
                     const loginValidate = validate(loginValue,
-                        ['req', 'minLen:3', 'maxLen:20', 'noSpaces', 'noSpecChar'])
+                        ['loginForm'])
                     if (!loginValidate.isValid) {
                         console.log(loginValidate.message)
                     } else {
@@ -61,7 +61,7 @@ export class Register extends Block {
                 blur: (e) => {
                     const firstName = e.target.value.trim();
                     const firstNameValid = validate(firstName,
-                        ['noSpaces', 'nameFormat', 'noSpecChar'])
+                        ['nameForm'])
                     if (!firstNameValid.isValid) {
                         console.log(firstNameValid.message)
                     } else {
@@ -80,7 +80,7 @@ export class Register extends Block {
                 blur: (e) => {
                     const secondName = e.target.value.trim();
                     const secondNameValid = validate(secondName,
-                        ['noSpaces', 'nameFormat', 'noSpecChar'])
+                        ['nameForm'])
                     if (!secondNameValid.isValid) {
                         console.log(secondNameValid.message)
                     } else {
@@ -94,7 +94,19 @@ export class Register extends Block {
             type: "text",
             name: "phone",
             placeholder: "телефон",
-            add_class: "page__input-small"
+            add_class: "page__input-small",
+            events: {
+                blur: (e) => {
+                    const phone = e.target.value.trim();
+                    const phoneValid = validate(phone,
+                        ['phoneForm'])
+                    if (!phoneValid.isValid) {
+                        console.log(phoneValid.message)
+                    } else {
+                        console.log(`Телефон - ${e.target.value}`)
+                    }
+                }
+            }
         });
 
         this.children.passwordInput = new Input({
@@ -106,7 +118,7 @@ export class Register extends Block {
                 blur: (e) => {
                     const password = e.target.value.trim();
                     const passwordValidate = validate(password,
-                        ['minLen:8', 'maxLen:40', 'passwordFormat'])
+                        ['passwordForm'])
                     if (!passwordValidate.isValid) {
                         console.log(passwordValidate.message)
                     } else {
@@ -131,21 +143,14 @@ export class Register extends Block {
             events: {
                 click: (e) => {
                     e.preventDefault();
-                    const emailValue = this.children.mailInput.element.value.trim();
-                    const loginValue = this.children.loginInput.element.value.trim();
-                    const firstNameValue = this.children.firstName.element.value.trim();
-                    const secondNameValue = this.children.secondName.element.value.trim();
-                    const phoneValue = this.children.phoneInput.element.value.trim();
-                    const passwordValue = this.children.passwordInput.element.value.trim();
-                    const passwordAgainValue = this.children.passwordAgain.element.value.trim();
                     const formData = {
-                        email: emailValue,
-                        login: loginValue,
-                        firstName: firstNameValue,
-                        secondName: secondNameValue,
-                        phone: phoneValue,
-                        password: passwordValue,
-                        passwordAgain: passwordAgainValue
+                        email: this.children.mailInput.element.value.trim(),
+                        login: this.children.loginInput.element.value.trim(),
+                        firstName: this.children.firstName.element.value.trim(),
+                        secondName: this.children.secondName.element.value.trim(),
+                        phone: this.children.phoneInput.element.value.trim(),
+                        password: this.children.passwordInput.element.value.trim(),
+                        passwordAgain: this.children.passwordAgain.element.value.trim()
                     };
                     console.log(formData);
                 }
