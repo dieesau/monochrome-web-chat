@@ -1,5 +1,6 @@
 {
   "name": "monochrome",
+  "type": "module",
   "version": "1.0.0",
   "description": "web chat",
   "scripts": {
@@ -8,7 +9,7 @@
     "stylelint": "stylelint ./**/*.css --fix",
     "dev": "vite",
     "build": "npm run clean && vite build",
-    "start": "npm run clean && vite build && node server/server.js"
+    "start": "npm run clean && vite build && node server.js"
   },
   "author": "",
   "license": "ISC",
