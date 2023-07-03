@@ -1,4 +1,4 @@
-import Block from "../../utils/Block";
+import Block from '../../utils/block';
 import template from './label.hbs';
 
 interface LabelProps {
@@ -14,7 +14,7 @@ export class Label extends Block<LabelProps> {
     }
 
     render() {
-        return this.compile(template, { ...this.props });
+        return this.compile(template, {...this.props});
     }
 }
 

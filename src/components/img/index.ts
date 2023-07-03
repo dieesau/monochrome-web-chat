@@ -1,4 +1,4 @@
-import Block from "../../utils/Block";
+import Block from '../../utils/block';
 import template from './img.hbs';
 
 interface ImgProps {
@@ -13,7 +13,7 @@ export class Img extends Block<ImgProps> {
     }
 
     render() {
-        return this.compile(template, { ...this.props });
+        return this.compile(template, {...this.props});
     }
 }
 
