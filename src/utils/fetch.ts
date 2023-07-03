@@ -8,10 +8,10 @@ enum METHODS {
 type Options = {
     method: METHODS;
     data?: any;
-    timeout: number
+    timeout: number;
 };
 
-function queryStringify(data:Record<string, any>) {
+function queryStringify(data: Record<string, any>) {
     if (typeof data === 'undefined') {
         return '';
     }
@@ -24,28 +24,40 @@ function queryStringify(data:Record<string, any>) {
 // console.log('111', queryStringify({a: 1, b: 2, c: {d: 123}, k: [1, 2, 3]}))
 
 class HTTPTransport {
-    get(url:string, options: Options) {
+    get(url: string, options: Options) {
         return this.request(
             url + queryStringify(options.data),
-            { ...options, method: METHODS.GET, timeout: 5000 },
+            {...options, method: METHODS.GET, timeout: 5000},
         );
     }
 
-    put(url:string, options = {}) {
-        return this.request(url, { ...options, method: METHODS.PUT, timeout: 5000 });
+    put(url: string, options = {}) {
+        return this.request(url, {
+            ...options,
+            method: METHODS.PUT,
+            timeout: 5000,
+        });
     }
 
-    post(url:string, options = {}) {
-        return this.request(url, { ...options, method: METHODS.POST, timeout: 5000 });
+    post(url: string, options = {}) {
+        return this.request(url, {
+            ...options,
+            method: METHODS.POST,
+            timeout: 5000,
+        });
     }
 
-    delete(url:string, options = {}) {
-        return this.request(url, { ...options, method: METHODS.DELETE, timeout: 5000 });
+    delete(url: string, options = {}) {
+        return this.request(url, {
+            ...options,
+            method: METHODS.DELETE,
+            timeout: 5000,
+        });
     }
 
     // eslint-disable-next-line class-methods-use-this
     request(url: string, options: Options): Promise<XMLHttpRequest> {
-        const { method, data, timeout } = options;
+        const {method, data, timeout} = options;
 
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();

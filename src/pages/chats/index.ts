@@ -1,4 +1,4 @@
-import Block from "../../utils/Block";
+import Block from "~utils/block";
 import template from './chats.hbs'
 import ChatContact from "../../partials/chat-contact";
 import img from "../../../static/img/cat_avatar.png";

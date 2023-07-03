@@ -1,4 +1,4 @@
-import Block from "../../utils/Block";
+import Block from "~utils/block";
 import template from './change_personal_data.hbs';
 import Button from "../../partials/button";
 import Img from "../../partials/img";

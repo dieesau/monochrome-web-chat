@@ -1,6 +1,6 @@
 import img from '../../../static/img/cat_err.png'
 import Img from "../../partials/img";
-import Block from "../../utils/Block";
+import Block from "~utils/block";
 import template from "./500.hbs"
 
 export class Error500 extends Block {
