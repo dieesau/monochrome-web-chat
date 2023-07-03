@@ -1,5 +1,5 @@
-import Block from "~utils/block";
-import template from "./home.hbs"
+import Block from '../../utils/block';
+import template from './home.hbs';
 
 export class Home extends Block {
     constructor() {
@@ -7,8 +7,7 @@ export class Home extends Block {
     }
 
     render() {
-        return this.compile(
-            template, {...this.props})
+        return this.compile(template, {...this.props});
     }
 }
 
