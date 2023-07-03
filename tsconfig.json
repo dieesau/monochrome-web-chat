@@ -36,9 +36,6 @@
       ],
       "~/*": [
         "src/*"
-      ],
-      "~partials/*": [
-        "src/partials/*"
       ]
     }
   },

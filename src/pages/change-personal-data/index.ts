@@ -1,5 +1,5 @@
 import Block from '../../utils/block';
-import template from './change-personal-data.hbs';
+import template from './change_personal_data.hbs';
 import Button from '../../components/button';
 import Img from '../../components/img';
 import img from '../../../static/img/cat_err.png';

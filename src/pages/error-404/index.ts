@@ -1,7 +1,7 @@
 import Block from '../../utils/block';
 import Img from '../../components/img';
 import img from '../../../static/img/cat_err.png';
-import template from './error-404.hbs';
+import template from './404.hbs';
 
 export class Error404 extends Block {
     constructor() {
