@@ -1,3 +1,18 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
 node_modules/
-.parcel-cache/
+.idea/
 dist/
+static/
+
+# Editor directories and files
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -1,8 +1,7 @@
 {
-  "extends": "stylelint-config-sass-guidelines",
+  "extends": "stylelint-config-standard",
   "rules": {
-    "color-hex-case": "lower",
-    "indentation": null
+    "color-hex-case": "lower"
   },
   "ignoreFiles": [
     "build/*"
