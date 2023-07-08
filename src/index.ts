@@ -6,17 +6,18 @@ import { ChangeData } from './pages/change-personal-data';
 import { Error404 } from './pages/error-404';
 import { Chats } from './pages/chats';
 import Router from "./utils/router";
+import router from "./utils/router";
 
-export const Routes = {
-    Auth: '/',
-    Register: '/register',
-    Profile: '/profile',
-    ChangeData: '/change-data',
-    Chats: '/messenger',
-    Error404: '/404'
+enum Routes {
+    Auth = '/',
+    Register= '/register',
+    Profile = '/profile',
+    ChangeData = '/change-data',
+    Chats = '/messenger',
+    Error404 = '/404'
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', async () => {
     Router
         .use(Routes.Auth, Login)
         .use(Routes.Register, Register)
@@ -24,5 +25,26 @@ window.addEventListener('DOMContentLoaded', () => {
         .use(Routes.ChangeData, ChangeData)
         .use(Routes.Chats, Chats)
         .use(Routes.Error404, Error404)
-        .start();
+
+    let isProtectedRoute = true;
+
+    switch (window.location.pathname) {
+        case Routes.Auth:
+        case Routes.Register:
+            isProtectedRoute = false
+            break
+    }
+
+    try {
+
+        router.start()
+
+    } catch (e) {
+        console.log(e, 'Here')
+        router.start()
+
+        if (isProtectedRoute) {
+            router.go(Routes.Error404)
+        }
+    }
 });
