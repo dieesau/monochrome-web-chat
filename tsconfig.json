@@ -36,6 +36,12 @@
       ],
       "~/*": [
         "src/*"
+      ],
+      "~api/*": [
+        "src/api/*"
+      ],
+      "~controllers/*": [
+        "src/controllers/*"
       ]
     }
   },

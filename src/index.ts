@@ -9,8 +9,8 @@ import Router from "./utils/router";
 import router from "./utils/router";
 
 enum Routes {
-    Auth = '/',
-    Register= '/register',
+    Auth = '/signin',
+    Register= '/signup',
     Profile = '/profile',
     ChangeData = '/change-data',
     Chats = '/messenger',

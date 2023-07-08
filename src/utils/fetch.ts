@@ -1,4 +1,4 @@
-enum METHODS {
+export enum METHODS {
     GET = 'GET',
     PUT = 'PUT',
     POST = 'POST',
@@ -21,9 +21,7 @@ function queryStringify(data: Record<string, any>) {
     return `?${Object.keys(data).map((key) => `${key}=${data[key]}`).join('&')}`;
 }
 
-// console.log('111', queryStringify({a: 1, b: 2, c: {d: 123}, k: [1, 2, 3]}))
-
-class HTTPTransport {
+export class HTTPTransport {
     get(url: string, options: Options) {
         return this.request(
             url + queryStringify(options.data),
@@ -80,5 +78,3 @@ class HTTPTransport {
         });
     }
 }
-
-export default HTTPTransport;
