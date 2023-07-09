@@ -11,7 +11,7 @@ class AuthController {
 
             await this.fetchUser();
 
-            Router.go('/profile');
+            Router.go('/');
         } catch (error) {
             console.log(error);
         }

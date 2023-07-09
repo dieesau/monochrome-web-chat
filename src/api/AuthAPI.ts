@@ -31,7 +31,7 @@ export class AuthAPI extends API {
     }
 
     signin(data: ISignInData): Promise<void> {
-        return this.http.post('/signin', data);
+        return this.http.post('/', data);
     }
 
     signup(data: ISignUpData): Promise<void> {

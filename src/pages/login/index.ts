@@ -3,6 +3,7 @@ import template from './login.hbs';
 import Input from '../../components/input';
 import Button from '../../components/button';
 import {validate} from '~utils/validation';
+import AuthController from "~controllers/AuthController";
 
 export class Login extends Block {
     constructor() {
@@ -50,11 +51,12 @@ export class Login extends Block {
                         this.children.loginInput.element.value.trim();
                     const passwordValue =
                         this.children.passwordInput.element.value.trim();
-                    const formData = {
+                    const data = {
                         login: loginValue,
                         password: passwordValue,
                     };
-                    console.log(formData);
+                    console.log(data);
+                    AuthController.signin(data)
                 },
             },
         });

@@ -9,7 +9,7 @@ import Router from "./utils/router";
 import router from "./utils/router";
 
 enum Routes {
-    Auth = '/signin',
+    Login = '/',
     Register= '/signup',
     Profile = '/profile',
     ChangeData = '/change-data',
@@ -19,7 +19,7 @@ enum Routes {
 
 window.addEventListener('DOMContentLoaded', async () => {
     Router
-        .use(Routes.Auth, Login)
+        .use(Routes.Login, Login)
         .use(Routes.Register, Register)
         .use(Routes.Profile, Profile)
         .use(Routes.ChangeData, ChangeData)
