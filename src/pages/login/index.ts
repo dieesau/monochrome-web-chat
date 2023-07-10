@@ -2,6 +2,7 @@ import Block from '../../utils/block';
 import template from './login.hbs';
 import Input from '../../components/input';
 import Button from '../../components/button';
+import {Link} from "../../components/link";
 import {validate} from '~utils/validation';
 import AuthController from "~controllers/AuthController";
 
@@ -61,16 +62,15 @@ export class Login extends Block {
             },
         });
 
-        this.children.regBtn = new Button({
+        this.children.regBtn = new Link({
             text: 'зарегистрироваться',
-            add_class: 'btn-medium',
-            type: 'submit',
-            events: {
-                click: (e) => {
-                    e.preventDefault();
-                },
-            },
+            to: '/signup',
+            link_class: 'button btn-medium',
         });
+    }
+
+    onSubmit() {
+        const values = Object
     }
 
     render() {

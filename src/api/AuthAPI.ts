@@ -27,11 +27,11 @@ export interface IUser {
 
 export class AuthAPI extends API {
     constructor() {
-        super('/auth');
+        super('/');
     }
 
     signin(data: ISignInData): Promise<void> {
-        return this.http.post('/', data);
+        return this.http.post('/signin', data);
     }
 
     signup(data: ISignUpData): Promise<void> {

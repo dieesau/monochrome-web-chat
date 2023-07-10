@@ -42,6 +42,9 @@
       ],
       "~controllers/*": [
         "src/controllers/*"
+      ],
+      "~link/*": [
+        "src/components/link/*"
       ]
     }
   },

@@ -9,7 +9,7 @@ import Router from "./utils/router";
 import router from "./utils/router";
 
 enum Routes {
-    Login = '/',
+    Login = '/signin',
     Register= '/signup',
     Profile = '/profile',
     ChangeData = '/change-data',
