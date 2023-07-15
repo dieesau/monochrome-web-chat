@@ -9,8 +9,8 @@ import Router from "./utils/router";
 import router from "./utils/router";
 
 enum Routes {
-    Login = '/signin',
-    Register= '/signup',
+    Login = '/',
+    Register= '/register',
     Profile = '/profile',
     ChangeData = '/change-data',
     Chats = '/messenger',
@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     let isProtectedRoute = true;
 
     switch (window.location.pathname) {
-        case Routes.Auth:
+        case Routes.Login:
         case Routes.Register:
             isProtectedRoute = false
             break

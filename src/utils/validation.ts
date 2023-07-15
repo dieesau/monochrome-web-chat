@@ -54,5 +54,4 @@ export function displayError(event: HTMLElement, errorMessage: string) {
 export function deleteError(event) {
     const next = event.target.nextSibling;
     next.tagName === 'SPAN' && event.currentTarget.parentNode.removeChild(next);
-    console.log(`Email - ${event.target.value}`);
 }

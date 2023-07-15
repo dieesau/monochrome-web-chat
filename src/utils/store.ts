@@ -1,6 +1,6 @@
 import { IUser } from '/api/AuthAPI';
 import EventBus from './event-bus';
-// import { set } from './utils';
+import  {set}  from './set';
 import Block from './block';
 
 export interface State {
@@ -37,7 +37,7 @@ export function withStore(mapStateToProps: (state: State) => any) {
 
                 store.on(StorageEvent.UpdateState, () => {
                     const propsFromState = mapStateToProps(store.getState());
-                    this.setProps(propsFromState);
+                    this.setProps({...propsFromState});
                 });
             }
         }

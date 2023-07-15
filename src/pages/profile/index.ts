@@ -4,6 +4,7 @@ import Label from '../../components/label';
 import Button from '../../components/button';
 import Img from '../../components/img';
 import img from '../../../static/img/cat_err.png';
+import AuthController from "~controllers/AuthController";
 
 export class Profile extends Block {
     constructor() {
@@ -76,9 +77,7 @@ export class Profile extends Block {
             add_class: 'btn-medium',
             type: 'button',
             events: {
-                click: (e) => {
-                    e.preventDefault();
-                },
+                click: () => { AuthController.logout(); },
             },
         });
 

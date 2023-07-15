@@ -3,6 +3,8 @@ import template from './input.hbs';
 
 interface InputProps {
     type: string;
+    value?: string
+    required: boolean
     name: string;
     placeholder: string;
     add_class?: string;

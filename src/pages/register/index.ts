@@ -3,6 +3,7 @@ import template from './register.hbs';
 import Input from '../../components/input';
 import Button from '../../components/button';
 import {validate} from '~utils/validation';
+import AuthController from "~controllers/AuthController";
 
 export class Register extends Block {
     constructor() {
@@ -105,19 +106,16 @@ export class Register extends Block {
             events: {
                 click: (e) => {
                     e.preventDefault();
-                    const formData = {
-                        email: this.children.mailInput.element.value.trim(),
+                    const data = {
+                        first_name: this.children.firstName.element.value.trim(),
+                        second_name: this.children.secondName.element.value.trim(),
                         login: this.children.loginInput.element.value.trim(),
-                        firstName: this.children.firstName.element.value.trim(),
-                        secondName:
-                            this.children.secondName.element.value.trim(),
+                        email: this.children.mailInput.element.value.trim(),
+                        password: this.children.passwordInput.element.value.trim(),
                         phone: this.children.phoneInput.element.value.trim(),
-                        password:
-                            this.children.passwordInput.element.value.trim(),
-                        passwordAgain:
-                            this.children.passwordAgain.element.value.trim(),
                     };
-                    console.log(formData);
+                    console.log(data);
+                    AuthController.signup(data)
                 },
             },
         });

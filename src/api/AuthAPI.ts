@@ -1,6 +1,6 @@
 import { API } from './api';
 
-export interface ISignUpData {
+export interface IRegisterData {
     first_name: string;
     second_name: string;
     login: string;
@@ -9,7 +9,7 @@ export interface ISignUpData {
     phone: string;
 }
 
-export interface ISignInData {
+export interface ILoginData {
     login: string;
     password: string;
 }
@@ -27,22 +27,22 @@ export interface IUser {
 
 export class AuthAPI extends API {
     constructor() {
-        super('/');
+        super('/auth');
     }
 
-    signin(data: ISignInData): Promise<void> {
-        return this.http.post('/signin', data);
+    signin(data: ILoginData): Promise<XMLHttpRequest> {
+        return this.http.post('/', data);
     }
 
-    signup(data: ISignUpData): Promise<void> {
+    signup(data: IRegisterData): Promise<XMLHttpRequest> {
         return this.http.post('/signup', data);
     }
 
-    logout(): Promise<void> {
+    logout(): Promise<XMLHttpRequest> {
         return this.http.post('/logout');
     }
 
-    getUser(): Promise<IUser> {
+    getUser(): Promise<XMLHttpRequest> {
         return this.http.get('/user');
     }
 }

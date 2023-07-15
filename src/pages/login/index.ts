@@ -17,6 +17,7 @@ export class Login extends Block {
     init() {
         this.children.loginInput = new Input({
             type: 'text',
+            required: true,
             name: 'login',
             placeholder: 'логин',
             add_class: 'page__input-big',
@@ -46,31 +47,29 @@ export class Login extends Block {
             add_class: 'btn-big',
             type: 'submit',
             events: {
-                click: (e) => {
-                    e.preventDefault();
-                    const loginValue =
-                        this.children.loginInput.element.value.trim();
-                    const passwordValue =
-                        this.children.passwordInput.element.value.trim();
-                    const data = {
-                        login: loginValue,
-                        password: passwordValue,
-                    };
-                    console.log(data);
-                    AuthController.signin(data)
-                },
+                click: () => this.onSubmit(),
             },
         });
 
         this.children.regBtn = new Link({
             text: 'зарегистрироваться',
-            to: '/signup',
+            to: '/register',
             link_class: 'button btn-medium',
         });
     }
 
     onSubmit() {
-        const values = Object
+        const values = Object.values(this.children)
+            .filter((child) => child instanceof Input)
+            .map((child) => {
+                const name = child.getName();
+                const value = child.getValue();
+                return [name, value];
+            });
+
+        const data = Object.fromEntries(values);
+        console.log(data);
+        AuthController.signin(data);
     }
 
     render() {

@@ -7,7 +7,7 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
 
     public id = nanoid(6);
 
-    private element: HTMLElement | null = null;
+    protected element: HTMLElement | null = null;
 
     public children: Record<string, Block | Block[]>;
 

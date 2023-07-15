@@ -1,26 +1,28 @@
-import { AuthAPI, ISignInData, ISignUpData } from '../api/AuthAPI';
+import { AuthAPI, ILoginData, IRegisterData } from '../api/AuthAPI';
 import Router from '../utils/Router';
 import store from '../utils/Store';
 
 class AuthController {
     private api = new AuthAPI();
 
-    async signin(data: ISignInData) {
+    async signin(data: ILoginData) {
         try {
             await this.api.signin(data);
 
             await this.fetchUser();
 
-            Router.go('/');
+            console.log(store.getState())
+            Router.go('/profile');
         } catch (error) {
             console.log(error);
         }
     }
 
-    async signup(data: ISignUpData) {
+    async signup(data: IRegisterData) {
         try {
+            console.log(data)
             await this.api.signup(data);
-
+            console.log(store.getState())
             Router.go('/profile');
         } catch (error) {
             console.log(error);
