@@ -2,6 +2,7 @@ import Block from '../../utils/block';
 import template from './profile.hbs';
 import Label from '../../components/label';
 import Button from '../../components/button';
+import {Link} from "../../components/link";
 import Img from '../../components/img';
 import img from '../../../static/img/cat_err.png';
 import AuthController from "~controllers/AuthController";
@@ -50,26 +51,16 @@ export class Profile extends Block {
             label_value_text: '+7(999)123-23-21',
         });
 
-        this.children.changeDataButton = new Button({
+        this.children.changeDataButton = new Link({
             text: 'ИЗМЕНИТЬ ДАННЫЕ',
-            add_class: 'btn-big',
-            type: 'button',
-            events: {
-                click: (e) => {
-                    e.preventDefault();
-                },
-            },
+            link_class: 'button btn-big',
+            to: '/change-data'
         });
 
-        this.children.changePasswordButton = new Button({
+        this.children.changeDataButton = new Link({
             text: 'ИЗМЕНИТЬ ПАРОЛЬ',
-            add_class: 'btn-big',
-            type: 'button',
-            events: {
-                click: (e) => {
-                    e.preventDefault();
-                },
-            },
+            link_class: 'button btn-big',
+            to: '/change-password'
         });
 
         this.children.logoutButton = new Button({

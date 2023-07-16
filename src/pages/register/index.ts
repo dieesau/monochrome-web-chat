@@ -4,6 +4,7 @@ import Input from '../../components/input';
 import Button from '../../components/button';
 import {validate} from '~utils/validation';
 import AuthController from "~controllers/AuthController";
+import {Link} from "../../components/link";
 
 export class Register extends Block {
     constructor() {
@@ -120,15 +121,10 @@ export class Register extends Block {
             },
         });
 
-        this.children.regBtn = new Button({
+        this.children.regBtn = new Link({
             text: 'войти',
-            add_class: 'btn-medium',
-            type: 'submit',
-            events: {
-                click: (e) => {
-                    e.preventDefault();
-                },
-            },
+            to: '/',
+            link_class: 'button btn-medium',
         });
     }
 

@@ -1,4 +1,4 @@
-import { AuthAPI, ILoginData, IRegisterData } from '../api/AuthAPI';
+import { AuthAPI, ILoginData, IRegisterData } from '~api/auth';
 import Router from '../utils/Router';
 import store from '../utils/Store';
 
@@ -8,24 +8,28 @@ class AuthController {
     async signin(data: ILoginData) {
         try {
             await this.api.signin(data);
-
-            await this.fetchUser();
-
-            console.log(store.getState())
-            Router.go('/profile');
-        } catch (error) {
-            console.log(error);
+            const user = await this.api.getUser();
+            store.set('user', user);
+            Router.go('/messenger');
+        } catch (e: any) {
+            console.error(e.reason);
+            if (e.reason === 'User already in system') {
+                Router.go('/messenger');
+            }
+            if (e.reason === 'Login or password is incorrect') {
+                alert('Неправильный логин или пароль');
+            }
         }
     }
 
     async signup(data: IRegisterData) {
         try {
-            console.log(data)
             await this.api.signup(data);
-            console.log(store.getState())
-            Router.go('/profile');
-        } catch (error) {
-            console.log(error);
+            const user = await this.api.getUser();
+            store.set('user', user);
+            Router.go('/messenger');
+        } catch (e: any) {
+            console.error(e);
         }
     }
 

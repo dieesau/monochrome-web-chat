@@ -30,19 +30,19 @@ export class AuthAPI extends API {
         super('/auth');
     }
 
-    signin(data: ILoginData): Promise<XMLHttpRequest> {
-        return this.http.post('/', data);
+    signin(data: ILoginData) {
+        return this.http.post('/signin', { data: data, method: 'post', timeout: 5000 });
     }
 
     signup(data: IRegisterData): Promise<XMLHttpRequest> {
-        return this.http.post('/signup', data);
+        return this.http.post('/signup', { data: data, method: 'post', timeout: 5000 });
     }
 
     logout(): Promise<XMLHttpRequest> {
-        return this.http.post('/logout');
+        return this.http.post('/logout',{ method: 'post', timeout: 5000 });
     }
 
     getUser(): Promise<XMLHttpRequest> {
-        return this.http.get('/user');
+        return this.http.get('/user',{ method: 'get', timeout: 5000 });
     }
 }
