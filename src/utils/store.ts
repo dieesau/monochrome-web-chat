@@ -1,13 +1,13 @@
 import { IUser } from '~api/auth';
 import EventBus from './event-bus';
-import  {set}  from './set';
+import  {set}  from '~utils/set';
 import Block from './block';
 
 export interface State {
     user?: IUser;
 }
 
-enum StorageEvent {
+export enum StorageEvent {
     UpdateState = 'update',
 }
 

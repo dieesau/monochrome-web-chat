@@ -1,4 +1,4 @@
-import { PropsWithRouter, withRouter } from '~utils/withRouter';
+import { PropsWithRouter, withRouter } from '../../hocs/withRouter';
 import Block from '../../utils/Block';
 import template from './link.hbs';
 

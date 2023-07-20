@@ -43,8 +43,11 @@
       "~controllers/*": [
         "src/controllers/*"
       ],
-      "~link/*": [
-        "src/components/link/*"
+      "~hocs/*": [
+        "src/hocs/*"
+      ],
+      "~helpers/*": [
+        "src/helpers/*"
       ]
     }
   },

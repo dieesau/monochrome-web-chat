@@ -1,4 +1,4 @@
-import Block from "./Block";
+import { Block } from "./Block";
 import renderDOM from "./renderDOM";
 
 export interface BlockConstructable<P = any> {
@@ -28,7 +28,7 @@ class Route {
 
     leave() {
         if (this._block) {
-            this._block?.hide();
+            this._block?.destroy();
         }
     }
 
@@ -109,4 +109,5 @@ class Router {
     }
 }
 
-export default new Router("#app");
+export default new Router(".app");
+

@@ -1,5 +1,5 @@
-import  Block  from './Block';
-import Router from './Router';
+import Block from '../utils/Block';
+import Router from '../utils/Router';
 
 export interface PropsWithRouter {
     router: typeof Router;

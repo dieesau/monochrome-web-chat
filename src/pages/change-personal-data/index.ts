@@ -5,6 +5,8 @@ import Img from '../../components/img';
 import img from '../../../static/img/cat_err.png';
 import Input from '../../components/input';
 import {validate} from '~utils/validation';
+import {Link} from "../../components/link";
+
 
 export class ChangeData extends Block {
     constructor() {
@@ -116,16 +118,12 @@ export class ChangeData extends Block {
             },
         });
 
-        this.children.backBtn = new Button({
+        this.children.backBtn = new Link({
             text: 'назад',
-            add_class: 'btn-medium',
-            type: 'submit',
-            events: {
-                click: (e) => {
-                    e.preventDefault();
-                },
-            },
+            link_class: 'button btn-medium',
+            to: '/profile'
         });
+
     }
 
     render() {

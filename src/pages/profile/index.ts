@@ -5,13 +5,23 @@ import Button from '../../components/button';
 import {Link} from "../../components/link";
 import Img from '../../components/img';
 import img from '../../../static/img/cat_err.png';
+import { withRouter } from "../../hocs/withRouter"
 import AuthController from "~controllers/AuthController";
-import {withStore, State} from "~utils/store";
+import store, {StorageEvent} from "~utils/store";
 
-export class BaseProfile extends Block {
+export class Profile extends Block {
+
+    constructor(props: object | undefined) {
+        super(props);
+
+        store.on(StorageEvent.UpdateState, () => {
+            this.setProps(store.getState());
+        });
+
+    }
 
     init() {
-
+        const user = store.getState().user
         this.children.label1 = new Label({
             label_class: 'profile-data-label',
             label_data_class: 'label',
@@ -56,7 +66,7 @@ export class BaseProfile extends Block {
             to: '/change-data'
         });
 
-        this.children.changeDataButton = new Link({
+        this.children.changePasswordButton = new Link({
             text: 'ИЗМЕНИТЬ ПАРОЛЬ',
             link_class: 'button btn-big',
             to: '/change-password'
@@ -71,6 +81,11 @@ export class BaseProfile extends Block {
             },
         });
 
+        this.children.sideButton = new Link({
+            link_class: 'side-btn',
+            to: '/messenger'
+        });
+
         this.children.avatarImg = new Img({
             src: img,
             alt: 'Аватар',
@@ -82,8 +97,5 @@ export class BaseProfile extends Block {
         return this.compile(template, {...this.children});
     }
 }
-function mapStateToProps(state: State) {
-    return {...state.user}
-}
 
-export const Profile = withStore(mapStateToProps(BaseProfile));
+export default withRouter(Profile);

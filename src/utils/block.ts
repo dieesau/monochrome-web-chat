@@ -227,4 +227,7 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
     public hide() {
         this.getContent().style.display = 'none';
     }
+    public destroy() {
+        this.element!.remove()
+    }
 }
