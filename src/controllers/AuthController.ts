@@ -41,8 +41,8 @@ class AuthController {
 
             Router.go('/');
 
-        } catch (error) {
-            console.log(error);
+        } catch (e: any) {
+            console.log(e);
         }
     }
 
@@ -52,8 +52,8 @@ class AuthController {
 
             store.set('user', user);
 
-        } catch (error) {
-            throw error;
+        } catch (e: any) {
+            throw e;
         }
     }
 }

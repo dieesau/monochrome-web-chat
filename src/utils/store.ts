@@ -1,4 +1,4 @@
-import { IUser } from '/api/AuthAPI';
+import { IUser } from '~api/auth';
 import EventBus from './event-bus';
 import  {set}  from './set';
 import Block from './block';

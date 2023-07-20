@@ -105,19 +105,7 @@ export class Register extends Block {
             add_class: 'btn-big',
             type: 'submit',
             events: {
-                click: (e) => {
-                    e.preventDefault();
-                    const data = {
-                        first_name: this.children.firstName.element.value.trim(),
-                        second_name: this.children.secondName.element.value.trim(),
-                        login: this.children.loginInput.element.value.trim(),
-                        email: this.children.mailInput.element.value.trim(),
-                        password: this.children.passwordInput.element.value.trim(),
-                        phone: this.children.phoneInput.element.value.trim(),
-                    };
-                    console.log(data);
-                    AuthController.signup(data)
-                },
+                click: () => this.onSubmit(),
             },
         });
 
@@ -126,6 +114,20 @@ export class Register extends Block {
             to: '/',
             link_class: 'button btn-medium',
         });
+    }
+
+    onSubmit() {
+        const values = Object.values(this.children)
+            .filter((child) => child instanceof Input)
+            .map((child) => {
+                const name = child.getName();
+                const value = child.getValue();
+                return [name, value];
+            });
+
+        const data = Object.fromEntries(values);
+        console.log(data);
+        AuthController.signup(data);
     }
 
     render() {
