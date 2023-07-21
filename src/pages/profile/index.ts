@@ -63,7 +63,7 @@ export class Profile extends Block {
         this.children.changeDataButton = new Link({
             text: 'ИЗМЕНИТЬ ДАННЫЕ',
             link_class: 'button btn-big',
-            to: '/change-data'
+            to: '/change-data',
         });
 
         this.children.changePasswordButton = new Link({

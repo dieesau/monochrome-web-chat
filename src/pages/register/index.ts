@@ -22,8 +22,7 @@ export class Register extends Block {
             add_class: 'page__input-small',
             events: {
                 blur: (e) => {
-                    const emailValue = e.target.value.trim();
-                    validate(emailValue, ['emailForm'], e);
+                    validate(e.target.value.trim(), ['emailForm'], e);
                 },
             },
         });
@@ -35,8 +34,7 @@ export class Register extends Block {
             add_class: 'page__input-small',
             events: {
                 blur: (e) => {
-                    const loginValue = e.target.value.trim();
-                    validate(loginValue, ['loginForm'], e);
+                    validate(e.target.value.trim(), ['loginForm'], e);
                 },
             },
         });
@@ -48,8 +46,7 @@ export class Register extends Block {
             add_class: 'page__input-small',
             events: {
                 blur: (e) => {
-                    const firstName = e.target.value.trim();
-                    validate(firstName, ['nameForm'], e);
+                    validate(e.target.value.trim(), ['nameForm'], e);
                 },
             },
         });
@@ -61,8 +58,7 @@ export class Register extends Block {
             add_class: 'page__input-small',
             events: {
                 blur: (e) => {
-                    const secondName = e.target.value.trim();
-                    validate(secondName, ['nameForm'], e);
+                    validate(e.target.value.trim(), ['nameForm'], e);
                 },
             },
         });
@@ -74,8 +70,7 @@ export class Register extends Block {
             add_class: 'page__input-small',
             events: {
                 blur: (e) => {
-                    const phone = e.target.value.trim();
-                    validate(phone, ['phoneForm'], e);
+                    validate(e.target.value.trim(), ['phoneForm'], e);
                 },
             },
         });
@@ -87,8 +82,7 @@ export class Register extends Block {
             add_class: 'page__input-small',
             events: {
                 blur: (e) => {
-                    const password = e.target.value.trim();
-                    validate(password, ['passwordForm'], e);
+                    validate(e.target.value.trim(), ['passwordForm'], e);
                 },
             },
         });

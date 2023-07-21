@@ -5,6 +5,9 @@ import Img from '../../components/img';
 import img from '../../../static/img/cat_err.png';
 import Input from '../../components/input';
 import {Link} from "../../components/link";
+import ProfileController from "~controllers/ProfileController";
+import store from "~utils/store";
+import {validate} from "~utils/validation";
 
 
 export class ChangePassword extends Block {
@@ -13,6 +16,7 @@ export class ChangePassword extends Block {
     }
 
     init() {
+        const user = store.getState().user
         this.children.avatar = new Img({
             src: img,
             alt: 'Avatar',
@@ -31,6 +35,11 @@ export class ChangePassword extends Block {
             name: 'newPassword',
             placeholder: 'Новый пароль',
             add_class: 'page__input-small',
+            events: {
+                    blur: (e) => {
+                        validate(e.target.value.trim(), ['passwordForm'], e);
+                    }
+            }
         });
 
         this.children.input3 = new Input({
@@ -46,13 +55,7 @@ export class ChangePassword extends Block {
             type: 'submit',
             events: {
                 click: (e) => {
-                    e.preventDefault();
-                    const formData = {
-                        oldPassword: this.children.input1.element.value.trim(),
-                        newPassword: this.children.input2.element.value.trim(),
-                        newPasswordAgain: this.children.input3.element.value.trim(),
-                    };
-                    console.log(formData);
+                    this.onSubmit()
                 },
             },
         });
@@ -62,6 +65,20 @@ export class ChangePassword extends Block {
             link_class: 'button btn-medium',
             to: '/profile'
         });
+    }
+
+    onSubmit() {
+        const values = Object.values(this.children)
+            .filter((child) => child instanceof Input)
+            .map((child) => {
+                const name = child.getName();
+                const value = child.getValue();
+                return [name, value];
+            });
+
+        const data = Object.fromEntries(values);
+        console.log(data);
+        ProfileController.changePassword(data);
     }
 
     render() {

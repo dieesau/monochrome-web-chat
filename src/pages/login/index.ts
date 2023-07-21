@@ -23,8 +23,7 @@ export class Login extends Block {
             add_class: 'page__input-big',
             events: {
                 blur: (e) => {
-                    const loginValue = e.target.value.trim();
-                    validate(loginValue, ['loginForm'], e);
+                    validate(e.target.value.trim(), ['loginForm'], e);
                 },
             },
         });
@@ -36,8 +35,7 @@ export class Login extends Block {
             add_class: 'page__input-big',
             events: {
                 blur: (e) => {
-                    const passwordValue = e.target.value.trim();
-                    validate(passwordValue, ['passwordForm'], e);
+                    validate(e.target.value.trim(), ['passwordForm'], e);
                 },
             },
         });
