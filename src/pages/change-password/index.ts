@@ -6,17 +6,22 @@ import img from '../../../static/img/cat_err.png';
 import Input from '../../components/input';
 import {Link} from "../../components/link";
 import ProfileController from "~controllers/ProfileController";
-import store from "~utils/store";
+import store, {StorageEvent} from "~utils/store";
 import {validate} from "~utils/validation";
 
 
 export class ChangePassword extends Block {
-    constructor() {
-        super({});
+
+    constructor(props: object | undefined) {
+        super(props);
+
+        store.on(StorageEvent.UpdateState, () => {
+            this.setProps(store.getState());
+        });
+
     }
 
     init() {
-        const user = store.getState().user
         this.children.avatar = new Img({
             src: img,
             alt: 'Avatar',
