@@ -5,6 +5,7 @@ import { Profile } from './pages/profile';
 import { ChangeData } from './pages/change-personal-data';
 import { ChangePassword } from './pages/change-password'
 import { Error404 } from './pages/error-404';
+import { Error500 } from "~pages/error-500";
 import { Chats } from './pages/chats';
 import AuthController from "~controllers/AuthController";
 import Router from "./utils/router";
@@ -17,7 +18,8 @@ enum Routes {
     ChangeData = '/change-data',
     ChangePassword = '/change-password',
     Chats = '/messenger',
-    Error404 = '/404'
+    Error404 = '/404',
+    Error500 = '/500'
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -29,6 +31,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         .use(Routes.ChangePassword, ChangePassword)
         .use(Routes.Chats, Chats)
         .use(Routes.Error404, Error404)
+        .use(Routes.Error500, Error500)
 
     try {
         await AuthController.fetchUser();
@@ -42,7 +45,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     } catch (e) {
         console.log(e)
         Router.start();
-        if(Boolean(store.getState().user)) {
+        if (Boolean(store.getState().user)) {
             Router.go('/profile');
         } else {
             Router.go('/');
