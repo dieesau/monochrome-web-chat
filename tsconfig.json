@@ -46,8 +46,11 @@
       "~hocs/*": [
         "src/hocs/*"
       ],
-      "~helpers/*": [
-        "src/helpers/*"
+      "~sidebar/*": [
+        "src/components/sidebar/*"
+      ],
+      "~messagePanel/*": [
+        "src/components/messagePanel/*"
       ]
     }
   },
