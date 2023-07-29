@@ -7,7 +7,7 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
 
     public id = nanoid(6);
 
-    private element: HTMLElement | null = null;
+    protected element: HTMLElement | null = null;
 
     public children: Record<string, Block | Block[]>;
 
@@ -226,5 +226,8 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
 
     public hide() {
         this.getContent().style.display = 'none';
+    }
+    public destroy() {
+        this.element!.remove()
     }
 }

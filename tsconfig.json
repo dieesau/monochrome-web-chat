@@ -36,6 +36,21 @@
       ],
       "~/*": [
         "src/*"
+      ],
+      "~api/*": [
+        "src/api/*"
+      ],
+      "~controllers/*": [
+        "src/controllers/*"
+      ],
+      "~hocs/*": [
+        "src/hocs/*"
+      ],
+      "~sidebar/*": [
+        "src/components/sidebar/*"
+      ],
+      "~messagePanel/*": [
+        "src/components/messagePanel/*"
       ]
     }
   },

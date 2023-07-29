@@ -1,52 +1,54 @@
 import './style.sass';
-import {Login} from './pages/login';
-import {Register} from './pages/register';
-import {Profile} from './pages/profile';
-import {ChangeData} from './pages/change-personal-data';
-import {Error404} from './pages/error-404';
-import {Error500} from './pages/error-500';
-import {Chats} from './pages/chats';
-import {Home} from './pages/home';
+import { Login } from './pages/login';
+import { Register } from './pages/register';
+import { Profile } from './pages/profile';
+import { ChangeData } from './pages/change-personal-data';
+import { ChangePassword } from './pages/change-password'
+import { Error404 } from './pages/error-404';
+import { Error500 } from "~pages/error-500";
+import { Chats } from './pages/chats';
+import AuthController from "~controllers/AuthController";
+import Router from "./utils/router";
+import store from "~utils/store";
 
-window.addEventListener('DOMContentLoaded', () => {
-    const root = document.querySelector('#app');
-    const path = window.location.pathname;
+enum Routes {
+    Login = '/',
+    Register= '/register',
+    Profile = '/profile',
+    ChangeData = '/change-data',
+    ChangePassword = '/change-password',
+    Chats = '/messenger',
+    Error404 = '/404',
+    Error500 = '/500'
+}
 
-    const home = new Home();
-    const login = new Login();
-    const register = new Register();
-    const profile = new Profile();
-    const changeData = new ChangeData();
-    const error404 = new Error404();
-    const error500 = new Error500();
-    const chats = new Chats();
+window.addEventListener('DOMContentLoaded', async () => {
+    Router
+        .use(Routes.Login, Login)
+        .use(Routes.Register, Register)
+        .use(Routes.Profile, Profile)
+        .use(Routes.ChangeData, ChangeData)
+        .use(Routes.ChangePassword, ChangePassword)
+        .use(Routes.Chats, Chats)
+        .use(Routes.Error404, Error404)
+        .use(Routes.Error500, Error500)
 
-    switch (path) {
-        case '/':
-            root?.append(home.getContent()!);
-            break;
-        case '/login':
-            root?.append(login.getContent()!);
-            break;
-        case '/register':
-            root?.append(register.getContent()!);
-            break;
-        case '/profile':
-            root?.append(profile.getContent()!);
-            break;
-        case '/change-data':
-            root?.append(changeData.getContent()!);
-            break;
-        case '/error-404':
-            root?.append(error404.getContent()!);
-            break;
-        case '/error-500':
-            root?.append(error500.getContent()!);
-            break;
-        case '/chats':
-            root?.append(chats.getContent()!);
-            break;
-        default:
-            root?.append(error404.getContent()!);
+    try {
+        await AuthController.fetchUser();
+        if(Boolean(store.getState().user.id)) {
+            Router.start();
+            Router.go('/profile');
+        } else {
+            Router.start();
+            Router.go('/');
+        }
+    } catch (e) {
+        console.log(e)
+        Router.start();
+        if (Boolean(store.getState().user)) {
+            Router.go('/profile');
+        } else {
+            Router.go('/');
+        }
     }
 });

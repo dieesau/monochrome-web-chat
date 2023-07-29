@@ -3,6 +3,8 @@ import template from './input.hbs';
 
 interface InputProps {
     type: string;
+    value?: string
+    required: boolean
     name: string;
     placeholder: string;
     add_class?: string;
@@ -15,6 +17,14 @@ interface InputProps {
 export class Input extends Block<InputProps> {
     constructor(props: InputProps) {
         super(props);
+    }
+
+    public getName() {
+        return (this.element as HTMLInputElement).name;
+    }
+
+    public getValue() {
+        return (this.element as HTMLInputElement).value;
     }
 
     render() {

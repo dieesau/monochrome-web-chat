@@ -5,6 +5,12 @@ import Img from '../../components/img';
 import img from '../../../static/img/cat_err.png';
 import Input from '../../components/input';
 import {validate} from '~utils/validation';
+import {Link} from "../../components/link";
+import { withRouter } from "../../hocs/withRouter"
+import AuthController from "~controllers/AuthController";
+import ProfileController from "~controllers/ProfileController";
+import store from "~utils/store";
+
 
 export class ChangeData extends Block {
     constructor() {
@@ -12,6 +18,8 @@ export class ChangeData extends Block {
     }
 
     init() {
+        const user = store.getState().user
+
         this.children.avatar = new Img({
             src: img,
             alt: 'Avatar',
@@ -19,79 +27,79 @@ export class ChangeData extends Block {
         });
 
         this.children.mailInput = new Input({
+            value: (user ? user.email : ''),
             type: 'email',
             name: 'email',
             placeholder: 'email',
             add_class: 'page__input-small',
             events: {
                 blur: (e) => {
-                    const emailValue = e.target.value.trim();
-                    validate(emailValue, ['emailForm'], e);
+                    validate(e.target.value.trim(), ['emailForm'], e);
                 },
             },
         });
 
         this.children.loginInput = new Input({
+            value: (user ? user.login : ''),
             type: 'text',
             name: 'login',
             placeholder: 'логин',
             add_class: 'page__input-small',
             events: {
                 blur: (e) => {
-                    const loginValue = e.target.value.trim();
-                    validate(loginValue, ['loginForm'], e);
+                    validate(e.target.value.trim(), ['loginForm'], e);
                 },
             },
         });
 
         this.children.firstName = new Input({
+            value: (user ? user.first_name : ''),
             type: 'text',
             name: 'first_name',
             placeholder: 'имя',
             add_class: 'page__input-small',
             events: {
                 blur: (e) => {
-                    const firstName = e.target.value.trim();
-                    validate(firstName, ['nameForm'], e);
+                    validate(e.target.value.trim(), ['nameForm'], e);
                 },
             },
         });
 
         this.children.secondName = new Input({
+            value: (user ? user.second_name : ''),
             type: 'text',
             name: 'second_name',
             placeholder: 'фамилия',
             add_class: 'page__input-small',
             events: {
                 blur: (e) => {
-                    const secondName = e.target.value.trim();
-                    validate(secondName, ['nameForm'], e);
+                    validate(e.target.value.trim(), ['nameForm'], e);
                 },
             },
         });
 
         this.children.phoneInput = new Input({
+            value: (user ? user.phone : ''),
             type: 'text',
             name: 'phone',
             placeholder: 'телефон',
             add_class: 'page__input-small',
             events: {
                 blur: (e) => {
-                    const phone = e.target.value.trim();
-                    validate(phone, ['phoneForm'], e);
+                    validate(e.target.value.trim(), ['phoneForm'], e);
                 },
             },
         });
 
         this.children.nicknameInput = new Input({
+            value: (user ? user.display_name : ''),
             type: 'text',
             name: 'display_name',
             placeholder: 'имя в чате',
             add_class: 'page__input-small',
             events: {
                 blur: (e) => {
-                    const nickname = e.target.value.trim();
-                    validate(nickname, ['nicknameForm'], e);
+                    validate(e.target.value.trim(), ['nicknameForm'], e);
                 },
             },
         });
@@ -102,30 +110,30 @@ export class ChangeData extends Block {
             type: 'submit',
             events: {
                 click: (e) => {
-                    e.preventDefault();
-                    const formData = {
-                        email: this.children.mailInput.element.value.trim(),
-                        login: this.children.loginInput.element.value.trim(),
-                        firstName: this.children.firstName.element.value.trim(),
-                        secondName:
-                            this.children.secondName.element.value.trim(),
-                        phone: this.children.phoneInput.element.value.trim(),
-                    };
-                    console.log(formData);
+                    this.onSubmit()
                 },
             },
         });
 
-        this.children.backBtn = new Button({
+        this.children.backBtn = new Link({
             text: 'назад',
-            add_class: 'btn-medium',
-            type: 'submit',
-            events: {
-                click: (e) => {
-                    e.preventDefault();
-                },
-            },
+            link_class: 'button btn-medium',
+            to: '/profile'
         });
+    }
+
+    onSubmit() {
+        const values = Object.values(this.children)
+            .filter((child) => child instanceof Input)
+            .map((child) => {
+                const name = child.getName();
+                const value = child.getValue();
+                return [name, value];
+            });
+
+        const data = Object.fromEntries(values);
+        console.log(data);
+        ProfileController.changeUser(data);
     }
 
     render() {
@@ -133,4 +141,4 @@ export class ChangeData extends Block {
     }
 }
 
-export default ChangeData;
+export default withRouter(ChangeData);

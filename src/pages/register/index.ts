@@ -3,6 +3,8 @@ import template from './register.hbs';
 import Input from '../../components/input';
 import Button from '../../components/button';
 import {validate} from '~utils/validation';
+import AuthController from "~controllers/AuthController";
+import {Link} from "../../components/link";
 
 export class Register extends Block {
     constructor() {
@@ -20,8 +22,7 @@ export class Register extends Block {
             add_class: 'page__input-small',
             events: {
                 blur: (e) => {
-                    const emailValue = e.target.value.trim();
-                    validate(emailValue, ['emailForm'], e);
+                    validate(e.target.value.trim(), ['emailForm'], e);
                 },
             },
         });
@@ -33,8 +34,7 @@ export class Register extends Block {
             add_class: 'page__input-small',
             events: {
                 blur: (e) => {
-                    const loginValue = e.target.value.trim();
-                    validate(loginValue, ['loginForm'], e);
+                    validate(e.target.value.trim(), ['loginForm'], e);
                 },
             },
         });
@@ -46,8 +46,7 @@ export class Register extends Block {
             add_class: 'page__input-small',
             events: {
                 blur: (e) => {
-                    const firstName = e.target.value.trim();
-                    validate(firstName, ['nameForm'], e);
+                    validate(e.target.value.trim(), ['nameForm'], e);
                 },
             },
         });
@@ -59,8 +58,7 @@ export class Register extends Block {
             add_class: 'page__input-small',
             events: {
                 blur: (e) => {
-                    const secondName = e.target.value.trim();
-                    validate(secondName, ['nameForm'], e);
+                    validate(e.target.value.trim(), ['nameForm'], e);
                 },
             },
         });
@@ -72,8 +70,7 @@ export class Register extends Block {
             add_class: 'page__input-small',
             events: {
                 blur: (e) => {
-                    const phone = e.target.value.trim();
-                    validate(phone, ['phoneForm'], e);
+                    validate(e.target.value.trim(), ['phoneForm'], e);
                 },
             },
         });
@@ -85,8 +82,7 @@ export class Register extends Block {
             add_class: 'page__input-small',
             events: {
                 blur: (e) => {
-                    const password = e.target.value.trim();
-                    validate(password, ['passwordForm'], e);
+                    validate(e.target.value.trim(), ['passwordForm'], e);
                 },
             },
         });
@@ -103,35 +99,29 @@ export class Register extends Block {
             add_class: 'btn-big',
             type: 'submit',
             events: {
-                click: (e) => {
-                    e.preventDefault();
-                    const formData = {
-                        email: this.children.mailInput.element.value.trim(),
-                        login: this.children.loginInput.element.value.trim(),
-                        firstName: this.children.firstName.element.value.trim(),
-                        secondName:
-                            this.children.secondName.element.value.trim(),
-                        phone: this.children.phoneInput.element.value.trim(),
-                        password:
-                            this.children.passwordInput.element.value.trim(),
-                        passwordAgain:
-                            this.children.passwordAgain.element.value.trim(),
-                    };
-                    console.log(formData);
-                },
+                click: () => this.onSubmit(),
             },
         });
 
-        this.children.regBtn = new Button({
+        this.children.regBtn = new Link({
             text: 'войти',
-            add_class: 'btn-medium',
-            type: 'submit',
-            events: {
-                click: (e) => {
-                    e.preventDefault();
-                },
-            },
+            to: '/',
+            link_class: 'button btn-medium',
         });
+    }
+
+    onSubmit() {
+        const values = Object.values(this.children)
+            .filter((child) => child instanceof Input)
+            .map((child) => {
+                const name = child.getName();
+                const value = child.getValue();
+                return [name, value];
+            });
+
+        const data = Object.fromEntries(values);
+        console.log(data);
+        AuthController.signup(data);
     }
 
     render() {

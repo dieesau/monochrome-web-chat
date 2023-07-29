@@ -1,4 +1,4 @@
-enum METHODS {
+export enum METHODS {
     GET = 'GET',
     PUT = 'PUT',
     POST = 'POST',
@@ -21,18 +21,25 @@ function queryStringify(data: Record<string, any>) {
     return `?${Object.keys(data).map((key) => `${key}=${data[key]}`).join('&')}`;
 }
 
-// console.log('111', queryStringify({a: 1, b: 2, c: {d: 123}, k: [1, 2, 3]}))
-
 class HTTPTransport {
-    get(url: string, options: Options) {
+
+    static API_URL = 'https://ya-praktikum.tech/api/v2';
+
+    protected endpoint: string
+
+    constructor(endpoint: string) {
+        this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
+    }
+
+    get(url: string, options?: Options) {
         return this.request(
-            url + queryStringify(options.data),
+            this.endpoint + url, //+ queryStringify(options.data)//
             {...options, method: METHODS.GET, timeout: 5000},
         );
     }
 
     put(url: string, options = {}) {
-        return this.request(url, {
+        return this.request(this.endpoint + url, {
             ...options,
             method: METHODS.PUT,
             timeout: 5000,
@@ -40,7 +47,7 @@ class HTTPTransport {
     }
 
     post(url: string, options = {}) {
-        return this.request(url, {
+        return this.request(this.endpoint + url, {
             ...options,
             method: METHODS.POST,
             timeout: 5000,
@@ -48,7 +55,7 @@ class HTTPTransport {
     }
 
     delete(url: string, options = {}) {
-        return this.request(url, {
+        return this.request(this.endpoint + url, {
             ...options,
             method: METHODS.DELETE,
             timeout: 5000,
@@ -61,22 +68,33 @@ class HTTPTransport {
 
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
+            xhr.open(method, url)
             xhr.timeout = timeout;
-            xhr.onload = function () {
-                resolve(xhr);
+
+            xhr.onreadystatechange = (e) => {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status < 400) {
+                        resolve(xhr.response);
+                    } else {
+                        reject(xhr.response);
+                    }
+                }
             };
 
             xhr.onabort = reject;
             xhr.onerror = reject;
             xhr.ontimeout = reject;
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.withCredentials = true;
+            xhr.responseType = 'json';
 
-            if (method === METHODS.GET || !data) {
-                xhr.open(method, url);
-                xhr.send();
-            } else {
-                xhr.open(method, url);
-                xhr.send(data);
-            }
+            xhr.send(JSON.stringify(data));
+
+            // if (method === METHODS.GET || !data) {
+            //     xhr.send();
+            // } else {
+            //     xhr.send(JSON.stringify(data));
+            // }
         });
     }
 }
