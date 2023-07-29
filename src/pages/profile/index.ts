@@ -73,7 +73,7 @@ export class Profile extends Block {
         });
 
         this.children.logoutButton = new Button({
-            text: 'выйти',
+            text: 'выйти из аккаунта',
             add_class: 'btn-medium',
             type: 'button',
             events: {

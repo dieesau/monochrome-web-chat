@@ -2,6 +2,7 @@ import Block from '../../utils/block';
 import template from './chats.hbs';
 import ChatContact from '../../components/chat-contact';
 import img from '../../../static/img/cat_avatar.png';
+import {Link} from "../../components/link";
 
 export class Chats extends Block {
     constructor() {
@@ -15,6 +16,11 @@ export class Chats extends Block {
     }
 
     init() {
+        this.children.profileLink = new Link({
+            to: '/profile',
+            text: 'ПРОФИЛЬ',
+        })
+
         this.children.contact1 = new ChatContact({
             contact_name: 'Андрей',
             last_message: 'Пошли катацо',
