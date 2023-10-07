@@ -2,7 +2,7 @@ import { EventBus } from './eventBus';
 
 export default class WS extends EventBus {
     private socket: WebSocket | null = null;
-    interval: number = 0;
+    interval = 0;
 
     constructor(private url: string) {
         super();
@@ -46,18 +46,6 @@ export default class WS extends EventBus {
 
         socket.addEventListener('close', () => {
             this.emit('close');
-        });
-
-    }
-
-    ping() {
-        this.interval = setInterval(() => {
-            this.send({ type: 'ping' });
-        }, 5000);
-    
-        this.on('close', () => {
-            clearInterval(this.interval);
-            this.interval = 0;
         });
     }
 }

@@ -10,6 +10,7 @@ import Chat from './pages/Chat';
 import Router from './core/Router';
 import AuthController from './controllers/AuthController';
 import store from './core/Store';
+import './styles.pcss';
 
 window.addEventListener('DOMContentLoaded', async() => {
     Router

@@ -12,7 +12,6 @@ import ProfileController from "../../controllers/ProfileController";
 import { ChangeUserType } from "api/profile";
 import { Modal } from "../../components/Modal";
 import Router from '../../core/Router';
-import ChatsController from '../../controllers/ChatsController';
 
 export class EditProfile extends Block {
 
@@ -157,7 +156,6 @@ export class EditProfile extends Block {
                     evt.preventDefault();
                     const form = document.querySelector('.changeUserAvatarForm') as HTMLFormElement;
                     const formData = new FormData(form);
-                    const avatar = formData.get('avatar');
                     formData.set('chatId', store.getState().currentChat);
                     ProfileController.changeAvatar(new FormData(form));
                     this.closeModal();

@@ -1,5 +1,3 @@
-import { Block } from 'core/Block';
-
 const regExpForEmail = /^[A-Z0-9-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i;
 const regExpForName = /^[A-ZА-Я]{1}[A-ZА-Яa-zа-я-]{2,30}$/;
 const regExpForPhone = /^[0-9+]{1}[0-9]{9,14}$/;

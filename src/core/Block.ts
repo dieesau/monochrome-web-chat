@@ -136,7 +136,7 @@ export class Block<P extends Record<string, any> = any>{
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
-  
+  //@ts-ignore
   componentDidUpdate(oldProps: object, newProps: object) {
     return true;
   }

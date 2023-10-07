@@ -1,7 +1,6 @@
 import { Button } from '../Button';
 import { Block } from '../../core/Block';
 import template from './modal.hbs';
-import ProfileController from "../../controllers/ProfileController";
 import ChatsController from '../../controllers/ChatsController';
 import store from '../../core/Store';
 

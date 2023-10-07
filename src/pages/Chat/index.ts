@@ -64,7 +64,7 @@ class Chat extends Block {
         this.children.messagePanel = new MessagePanel({});
     }
 
-    componentDidUpdate(oldProps: any, newProps: any): boolean {
+    componentDidUpdate(): boolean {
         this.children.sidebar = new Sidebar({});
         return true;
     }
