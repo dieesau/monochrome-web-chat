@@ -1,68 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
-    "skipLibCheck": true,
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
+    "target": "es2017",
+    "module": "commonjs",  
+    "baseUrl": "./src",
     "sourceMap": true,
-    "strictNullChecks": true,
-    "paths": {
-      "~components/*": [
-        "src/components/*"
-      ],
-      "~pages/*": [
-        "src/pages/*"
-      ],
-      "~typings/*": [
-        "src/typings/*"
-      ],
-      "~utils/*": [
-        "src/utils/*"
-      ],
-      "~/*": [
-        "src/*"
-      ],
-      "~api/*": [
-        "src/api/*"
-      ],
-      "~controllers/*": [
-        "src/controllers/*"
-      ],
-      "~hocs/*": [
-        "src/hocs/*"
-      ],
-      "~sidebar/*": [
-        "src/components/sidebar/*"
-      ],
-      "~messagePanel/*": [
-        "src/components/messagePanel/*"
-      ]
-    }
-  },
-  "rules": {
-    "no-unused-variable": [
-      true,
-      {
-        "ignore-pattern": "^_"
-      }
-    ]
-  },
-  "include": [
-    "src"
-  ]
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,             
+    "strictNullChecks": true,                                         
+    "noUnusedLocals": true,                          
+    "noUnusedParameters": true,                                   
+    "skipLibCheck": true                                 
+  }
 }

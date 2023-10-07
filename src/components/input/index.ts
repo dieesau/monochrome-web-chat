@@ -1,35 +1,26 @@
-import Block from '../../utils/block';
+import { Block } from '../../core/Block';
 import template from './input.hbs';
 
-interface InputProps {
-    type: string;
-    value?: string
-    required: boolean
-    name: string;
-    placeholder: string;
-    add_class?: string;
+type InputProps = {
+    forAndName: string;
+    labelClass: string;
+    labelText: string;
+    inputType: string;
+    inputClass: string;
+    value?: string;
+    error?: string;
     events?: {
         blur?: () => void;
         focus?: () => void;
-    };
+    }
 }
 
-export class Input extends Block<InputProps> {
-    constructor(props: InputProps) {
-        super(props);
-    }
-
-    public getName() {
-        return (this.element as HTMLInputElement).name;
-    }
-
-    public getValue() {
-        return (this.element as HTMLInputElement).value;
-    }
+export class Input extends Block<any> {
+  constructor(props: InputProps) {
+    super(props)
+  }
 
     render() {
-        return this.compile(template, {...this.props});
-    }
+    return this.compile(template, { ...this.props});
+  }
 }
-
-export default Input;

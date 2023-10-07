@@ -1,0 +1,32 @@
+<section class="chat-panel">
+  <div class="chat-panel__header">
+    {{{image}}}
+    <h5 class="chat-panel__chat-name">{{chatName}}</h5>
+    <div class="dots-menu-container">
+      {{{dotsMenu}}}
+    </div>
+    {{{dotsMenu}}}
+  </div>
+  <div class="chat-panel__messages">
+    {{#if message}}
+    <div class="chat-panel_messages-container">
+      {{#each msgList}}
+      {{{this}}}
+      {{/each}}
+    </div>
+    {{else}}
+    <div class="chat-panel_messages-container">
+      Здесь будут сообщения
+    </div>
+    {{/if}}
+  </div>
+  <div class="chat-panel__send-container">
+    <form id="form" onsubmit="event.preventDefault()">
+      {{{clipButton}}}
+      <input type="text" placeholder="Сообщение" class="chat-panel__input" name="message" id="message">
+      <label class="error" id="error">{{error}}</label>
+      {{{arrowButton}}}
+      {{{changeAvatarModal}}}
+    </form>
+  </div>
+</section>

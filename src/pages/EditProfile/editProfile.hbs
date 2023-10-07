@@ -1,0 +1,24 @@
+<main class="container profile">
+  {{{sideButton}}}
+  {{{image}}}
+  <form class="profile__inputs-container" id="form">
+    {{{input}}}
+    {{{input1}}}
+    {{{input2}}}
+    {{{input3}}}
+    {{{input4}}}
+    {{{input5}}}
+    {{{input6}}}
+    {{{button}}}
+  </form>
+  <section class="modal" id="changeUserAvatarModal">
+    <div class="modal__content-container">
+      <h5 class="modal__header">Загрузите файл</h5>
+      <form id="modal" class="changeUserAvatarForm">
+        <input type="file" name="avatar" accept="image/png, image/jpeg" class="modal__input">
+        <label for="avatar" class="modal__content">Выбрать файл на компьютере</label>
+        {{{modalButton}}}
+      </form>
+    </div>
+  </section>
+</main>

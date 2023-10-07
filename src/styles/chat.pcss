@@ -1,0 +1,240 @@
+.chat__container {
+  display: flex;
+}
+
+.chat__sidebar {
+  flex-grow: 1;
+  border-right: 0.1rem solid #EAEAEA;
+}
+
+.chat__link {
+  @mixin text #999999, 1.2rem, 1.5rem;
+  text-decoration: none;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1.0rem;
+  margin-top: 2.1rem;
+}
+
+.chat__chat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @mixin text #999999, 1.2rem, 1.2rem;
+    height: 100vh;
+    flex-grow: 3;
+}
+
+.search__form {
+  display: flex;
+  justify-content: center;
+  border-bottom: 0.1rem solid #EAEAEA;
+  margin: 2.3rem 1.0rem 0;
+  padding-bottom: 1.4rem;
+}
+
+.search__input {
+  position: relative;
+  width: 29.0rem;
+  height: 3.2rem;
+  text-align: center;
+  background: #EFEFEF url("../assets/search-icon.png") no-repeat;
+  background-position: 38% 50%;
+  border-radius: 0.5rem;
+  border: none;
+}
+
+.sidebar-user-chat {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 0.1rem solid #EAEAEA;
+}
+
+.sidebar-user-chat__details {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1.4rem;
+  text-align: center;
+  flex-grow: 1;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  @mixin text #999999, 0.9rem, 1.3rem;
+}
+
+.sidebar-user-chat__preview {
+  display: flex;
+  flex-grow: 2;
+  flex-direction: column;
+}
+
+.sidebar-user-chat__chat-name {
+  margin-bottom: 0.4rem;
+  margin-top: 1.2rem;
+  @mixin text #1E1E1E, 1.3rem, 1.3rem, 600;
+  text-align: left;
+}
+
+.sidebar-user-chat__chat-text-preview {
+  margin: 0;
+  @mixin text #999999, 1.2rem, 1.5rem;
+  text-align: left;
+}
+
+.sidebar-user-chat__user-photo {
+  margin: 1.2rem 1rem;
+  background-color: #EAEAEA;
+  width: 4.7rem;
+  height: 4.7rem;
+  border-radius: 3rem;
+}
+
+.badge {
+  display: table-cell;
+  background-color: var(--main-blue);
+  width: 2.0rem;
+  height: 1.2rem;
+  border-radius: 1.5rem;
+  @mixin text #FFFFFF, 1.1rem, 1.2rem;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+}
+
+.chat-panel {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  height: 100vh;
+  flex-grow: 3;
+}
+
+.chat-panel__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 1.0rem 2.0rem;
+  @mixin text #1E1E1E, 1.3rem, 1.3rem, 600;
+  border-bottom: 0.1rem solid #EAEAEA;
+  padding-bottom: 1.0rem;
+}
+
+.chat-panel__chat-name {
+  @mixin text #1E1E1E, 1.3rem, 1.3rem, 600;
+}
+
+.chat-panel__user-photo {
+  margin-right: 1.0rem;
+}
+
+.dots-menu-container {
+  margin-left: auto;
+}
+
+.chat-panel__dots-menu {
+  margin-left: auto;
+}
+
+.chat-panel__dots-menu:hover {
+  cursor: pointer;
+}
+
+.chat-panel__time {
+  @mixin text #999999, 1.2rem, 1.2rem;
+  margin-top: 3.8rem;
+}
+
+.chat-panel_messages-container {
+  padding-bottom: 1.5rem;
+  @mixin text #999999, 1.2rem, 1.2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-panel__send-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 1.0rem 2.0rem;
+  border-top: 0.1rem solid #EAEAEA;
+  padding-top: 1.0rem;
+}
+
+.chat-panel__clip-button {
+  margin-right: 1.0rem;
+}
+
+.chat-panel__input {
+  text-align: left;
+  background-color: #EFEFEF;
+  border-radius: 2.0rem;
+  border: none;
+  height: 3.2rem;
+  width: 50.0rem;
+}
+
+.chat-panel__arrow-button {
+  margin-left: auto;
+}
+
+.addChat {
+  background-color: var(--main-blue);
+  width: 5rem;
+  height: 2rem;
+  border-radius: 1.5rem;
+  @mixin text #FFFFFF, 0.9rem, 1.0rem;
+  text-align: center;
+  margin-left: 1.0rem;
+  text-decoration: none;
+}
+
+.addChat:hover {
+  cursor: pointer;
+}
+
+.sidebar-user-chat__chats-container {
+  display: flex;
+  border-bottom: 0.1rem solid #eaeaea;
+  padding: 1.2rem 1.0rem;
+}
+
+.links-panel {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    min-height: 2rem;
+    width: 40rem;
+    background-color: #EAEAEA;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+    border-radius: 1.2rem;
+    @mixin text #1E1E1E, 1.2rem, 1.5rem, 500;
+    padding: 1.1rem;
+}
+
+.time {
+    @mixin text #999999, 0.9rem, 1.3rem;
+    align-self: flex-end;
+}
+
+.byUser {
+    @mixin text #1E1E1E, 0.9rem, 1.3rem;
+}
+
+.my-message {
+    display: flex;
+    flex-direction: column;
+    background-color: #E4EDFD;
+    min-height: 2rem;
+    width: 40rem;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+    border-radius: 1.2rem;
+    @mixin text #1E1E1E, 1.2rem, 1.5rem, 500;
+    padding: 1.1rem;
+}

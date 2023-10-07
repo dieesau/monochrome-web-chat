@@ -1,23 +1,27 @@
-import store from "~utils/store";
-import {ProfileAPI, IChangeUserData, IPasswordData} from "~api/profile";
+import store from '../core/Store';
+import API, { ChangeUserType, PasswordDataType, ProfileAPI } from '../api/profile';
 
-class ProfileController {
-    private api = new ProfileAPI();
+export class ProfileController {
+    private readonly api: ProfileAPI;
 
-    async changeUser(data: IChangeUserData) {
+    constructor() {
+        this.api = API;
+    }
+
+    async changeUser(data: ChangeUserType) {
         try {
             await this.api.changeUser(data);
             store.set('user', data);
         } catch (e: any) {
-            console.log(e)
+            console.error(e);
         }
     }
 
     async getUser() {
         await this.api.read(store.getState().user.id);
     }
-
-    async changePassword(data: IPasswordData) {
+    
+    async changePassword(data: PasswordDataType) {
         try {
             await this.api.changePassword(data);
         } catch (e: any) {

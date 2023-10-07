@@ -1,40 +1,40 @@
-import { API } from './api';
+import BaseAPI from './base-api';
 
-export type IPasswordData =  {
-    oldPassword: string;
-    newPassword: string;
+export type PasswordDataType =  {
+  oldPassword: string;
+  newPassword: string;
 }
 
-export type IUser =  {
-    id: number;
+export type UserType =  {
+  id: number;
+  first_name: string;
+  second_name: string;
+  display_name: string;
+  login: string;
+  email: string;
+  phone: string;
+  avatar: string;
+}
+
+export type ChangeUserType = {
     first_name: string;
     second_name: string;
     display_name: string;
     login: string;
     email: string;
     phone: string;
-    avatar: string;
 }
 
-export type IChangeUserData = {
-    first_name: string;
-    second_name: string;
-    display_name: string;
-    login: string;
-    email: string;
-    phone: string;
-}
-
-export class ProfileAPI extends API {
+export class ProfileAPI extends BaseAPI {
     constructor() {
         super('/user');
     }
 
-    changeUser(data: IChangeUserData) {
-        return this.http.put('/profile', { data: data, method: 'put', timeout: 5000 });
+    changeUser(data: ChangeUserType) {
+      return this.http.put('/profile', { data: data, method: 'put', timeout: 5000 });
     }
-
-    changePassword(data: IPasswordData) {
+    
+    changePassword(data: PasswordDataType) {
         return this.http.put('/password', { data: data, method: 'put', timeout: 5000 });
     }
 
@@ -49,6 +49,10 @@ export class ProfileAPI extends API {
     search(login: string) {
         return this.http.post(`/search`, { data: {login: login }, method: 'post', timeout: 5000 });
     }
+    
+    create = undefined;
+    update = undefined;
+    delete = undefined;
 }
 
 export default new ProfileAPI();

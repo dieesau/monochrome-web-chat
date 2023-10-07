@@ -1,0 +1,79 @@
+.btn {
+  background: #3369F3;
+  border-radius: 0.8rem;
+  border: #3369F3;
+  width: 28.0rem;
+  height: 3.7rem;
+  @mixin text var(--btn-text-color), 1.3rem, 1.3rem;
+  margin-top: 6.0rem;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.side-btn {
+  position: absolute;
+  width: 6.4rem;
+  height: 120vh;
+  left: 0;
+  top: 0;
+  background-color: #FBFBFB;
+  border: none;
+  border-right: 0.1rem solid #EAEAEA;
+
+    img {
+      margin-top: 50vh;
+      margin-left: 30%;
+      transform: rotate(180deg);
+    }
+}
+
+.side-btn:hover {
+  cursor: pointer;
+}
+
+.close-btn {
+    margin: 0;
+    width: 2.0rem;
+    height: 2.0rem;
+    background: #3369F3;
+    border-radius: 0.8rem;
+    border: #3369F3;
+    @mixin text var(--btn-text-color), 1.0rem, 1.0rem;
+    float: right;
+}
+
+.close-btn:hover {
+  cursor: pointer;
+}
+
+.delete-btn {
+    background: #FF2F2F;
+    border-radius: 0.8rem;
+    border: #FF2F2F;
+    width: 20.0rem;
+    height: 3.7rem;
+    @mixin text var(--btn-text-color), 1.3rem, 1.3rem;
+    margin-top: 1.0rem;
+}
+
+.delete-user-btn {
+    background: #FFFFFF;
+    border-radius: 0.8rem;
+    border: 1px solid #FF2F2F;
+    width: 20.0rem;
+    height: 3.7rem;
+    @mixin text #FF2F2F, 1.3rem, 1.3rem;
+    margin-top: 1.0rem;
+}
+
+.add-user-btn {
+    background: #3369F3;
+    border-radius: 0.8rem;
+    border: #3369F3;
+    width: 20.0rem;
+    height: 3.7rem;
+    @mixin text var(--btn-text-color), 1.3rem, 1.3rem;
+    margin-top: 1.8rem;
+}

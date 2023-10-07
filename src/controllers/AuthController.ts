@@ -1,14 +1,20 @@
-import { AuthAPI, ILoginData, IRegisterData } from '~api/auth';
-import Router from '../utils/Router';
-import store from '../utils/Store';
+import store from '../core/Store';
+import API, { AuthAPI, SignInDataType, SignUpDataType } from '../api/auth';
+import Router from '../core/Router';
+import ChatsController from './ChatsController';
 
-class AuthController {
-    private api = new AuthAPI();
 
-    async signin(data: ILoginData) {
+export class AuthController {
+    private readonly api: AuthAPI;
+
+    constructor() {
+        this.api = API;
+    }
+   
+    async signin(data: SignInDataType) {
         try {
             await this.api.signin(data);
-            const user = await this.api.getUser();
+            const user = await this.api.read();
             store.set('user', user);
             Router.go('/messenger');
         } catch (e: any) {
@@ -17,15 +23,16 @@ class AuthController {
                 Router.go('/messenger');
             }
             if (e.reason === 'Login or password is incorrect') {
-                alert('Неправильный логин или пароль');
+                document.querySelector('.form-error')!.textContent = 'Неправильный логин или пароль';
             }
+            document.querySelector('.form-error')!.textContent = '';
         }
     }
 
-    async signup(data: IRegisterData) {
+    async signup(data: SignUpDataType) {
         try {
             await this.api.signup(data);
-            const user = await this.api.getUser();
+            const user = await this.api.read();
             store.set('user', user);
             Router.go('/messenger');
         } catch (e: any) {
@@ -33,28 +40,23 @@ class AuthController {
         }
     }
 
-    async logout() {
-        try {
-            await this.api.logout();
-
-            store.set('user', undefined);
-
-            Router.go('/');
-
-        } catch (e: any) {
-            console.log(e);
-        }
+  async logout() {
+    try {
+        ChatsController.closeAll();
+        await this.api.logout();
+        Router.go('/');
+        store.set('user', null);
+        store.set('chats', null);
+        store.set('currentChat', null);
+        store.set('messages', null);
+    } catch (e: any) {
+        console.error(e);
     }
+  }
 
     async fetchUser() {
-        try {
-            const user = await this.api.getUser();
-
-            store.set('user', user);
-
-        } catch (e: any) {
-            throw e;
-        }
+        const user = await this.api.read();
+        store.set('user', user);
     }
 }
 

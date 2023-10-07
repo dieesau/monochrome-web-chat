@@ -1,7 +1,15 @@
-### Проект на Netlify
-https://brilliant-jelly-9d4f01.netlify.app/
+***Веб-приложение "Чат".***
+ - Шаблонизатор: Handlebars
+ - Язык: Typescript
+ - Стили: PostCSS
+ - Макет: [Figma](https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?type=design&node-id=0%3A1&t=hfjoJ2DkvLkAWvLC-1) (стандартный, ничего не меняла)
+ - Сборщик: Parcel
+ - Анализаторы кода: Eslint и Stylelint
+ - Обмен сообщениями: WebSocket
 
-___
+[**Deploy**](https://unrivaled-kulfi-ba83f2.netlify.app/)
 
-### Макет
-https://www.figma.com/file/vXRdFEvf3bDFvLply2dop5/Monochrome?node-id=0-1
+Команды:
+- `npm install` — чтобы установить зависимости
+- `npm run dev` — запуск версии для разработчика
+- `npm run start` — сборка версии и запуск Express сервера

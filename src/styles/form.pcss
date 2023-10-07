@@ -1,0 +1,56 @@
+@import url("./mixins.pcss");
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 34.0rem;
+  min-height: 45.0rem;
+  background: #FFFFFF;
+  box-shadow: 0 0 6px rgba(0 0 0 / 14%);
+  border-radius: 1.2rem;
+  padding-top: 5rem;
+}
+
+.form__header {
+  @mixin text;
+}
+
+.form__link {
+  @mixin text var(--main-blue), 1.1rem, 1.1rem;
+  text-decoration: none;
+  margin-top: 1.4rem;
+  margin-bottom: 3.0rem;
+  margin-left: 1.0rem;
+}
+
+.form__inputs-container {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 0 3.0rem auto;
+}
+
+.input {
+    border: none;
+    outline: none;
+    border-bottom: 0.1rem solid var(--main-blue);
+    width: 28.0rem;
+    margin-bottom: 0.1rem;
+}
+
+.input-container {
+    margin-bottom: 1.6rem;
+}
+
+.error {
+    @mixin text #FF2F2F, 0.8rem, 0.8rem, 400;
+}
+
+.label {
+    @mixin text var(--label-text-color), 0.9rem, 0.9rem;
+}
+
+.form-error {
+    @mixin text #FF2F2F, 1.1rem, 1.1rem;
+}

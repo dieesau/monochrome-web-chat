@@ -1,5 +1,2 @@
-/build
-**/*.min.js
-/node_modules
-dist/
-normalize.css
+/dist
+/node_modules 
