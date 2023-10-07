@@ -1,0 +1,13 @@
+<div class="message-container">
+        {{#if isMyMsg}}
+            <div class="my-message">
+                {{content}}
+                <span class="time">{{time}}</span>
+            </div>
+        {{else}}
+            <div class="message">
+                {{content}}
+                <span class="time">{{time}}</span>
+            </div>
+        {{/if}}
+</div>

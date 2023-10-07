@@ -1,4 +1,4 @@
-import { API } from './api';
+import BaseAPI from './base-api';
 
 export type CreateChatType = {
     title: string
@@ -7,12 +7,12 @@ export type CreateChatType = {
 type Users = number[];
 
 export type DeleteOrAddUserFromChat = {
-    users: Users,
-    chatId: number
+        users: Users,
+        chatId: number
 
 }
 
-export class ChatAPI extends API {
+export class ChatAPI extends BaseAPI {
     constructor() {
         super('/chats');
     }
@@ -24,7 +24,7 @@ export class ChatAPI extends API {
     getFilter(filter: string) {
         return this.http.get(filter,{ method: 'get', timeout: 5000 });
     }
-
+    
     create(data: CreateChatType) {
         return this.http.post('/',{ data: data, method: 'post', timeout: 5000 });
     }
@@ -49,7 +49,7 @@ export class ChatAPI extends API {
     changeAvatar(data: any) {
         return this.http.put('/avatar', { data: data, method: 'put', timeout: 5000 });
     }
-
+    
     update = undefined;
 }
 

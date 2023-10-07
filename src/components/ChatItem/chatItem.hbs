@@ -1,0 +1,21 @@
+<div class="sidebar-user-chat__chats-container" id={{id}}>
+  {{#if avatar}}
+  {{{avatar}}}
+  {{else}}
+  <span class='sidebar-user-chat__user-photo'></span>
+  {{/if}}
+  <div class="sidebar-user-chat__preview">
+    <p class="sidebar-user-chat__chat-name">{{title}}</p>
+    {{#if last_message.content}}
+    <p class="sidebar-user-chat__chat-text-preview">{{previewMsg}}</p>
+    {{else}}
+    <p class="sidebar-user-chat__chat-text-preview">Превью текста чата</p>
+    {{/if}}
+  </div>
+  <div class="sidebar-user-chat__details">
+    <span class="time">{{time}}</span>
+    {{#if unread_count}}
+    <span class="badge">{{unread_count}}</span>
+    {{/if}}
+  </div>
+</div>

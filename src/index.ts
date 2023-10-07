@@ -1,52 +1,41 @@
-import './style.sass';
-import { Login } from './pages/login';
-import { Register } from './pages/register';
-import { Profile } from './pages/profile';
-import { ChangeData } from './pages/change-personal-data';
-import { ChangePassword } from './pages/change-password'
-import { Error404 } from './pages/error-404';
-import { Error500 } from "~pages/error-500";
-import { Chats } from './pages/chats';
-import AuthController from "~controllers/AuthController";
-import Router from "./utils/router";
-import store from "~utils/store";
+import LoginPage from './pages/LoginPage';
+import Profile from './pages/Profile';
+import { EditProfile } from './pages/EditProfile';
+import EditPassword from './pages/EditPassword';
+import { Registration } from './pages/Registration';
+import { Error400 } from './pages/Page400';
+import { Error500 } from './pages/Page500';
+import { AddDeleteUserPanel } from './components/AddDeleteUserPanel';
+import Chat from './pages/Chat';
+import Router from './core/Router';
+import AuthController from './controllers/AuthController';
+import store from './core/Store';
 
-enum Routes {
-    Login = '/',
-    Register= '/register',
-    Profile = '/profile',
-    ChangeData = '/change-data',
-    ChangePassword = '/change-password',
-    Chats = '/messenger',
-    Error404 = '/404',
-    Error500 = '/500'
-}
-
-window.addEventListener('DOMContentLoaded', async () => {
+window.addEventListener('DOMContentLoaded', async() => {
     Router
-        .use(Routes.Login, Login)
-        .use(Routes.Register, Register)
-        .use(Routes.Profile, Profile)
-        .use(Routes.ChangeData, ChangeData)
-        .use(Routes.ChangePassword, ChangePassword)
-        .use(Routes.Chats, Chats)
-        .use(Routes.Error404, Error404)
-        .use(Routes.Error500, Error500)
+        .use('/', LoginPage)
+        .use('/messenger', Chat)
+        .use('/settings', Profile)
+        .use('/edit-profile', EditProfile)
+        .use('/edit-password', EditPassword)
+        .use('/sign-up', Registration)
+        .use('/error400', Error400)
+        .use('/error500', Error500)
+        .use('/addAndDeleteUser', AddDeleteUserPanel)
 
     try {
         await AuthController.fetchUser();
         if(Boolean(store.getState().user.id)) {
             Router.start();
-            Router.go('/profile');
+            Router.go('/messenger');
         } else {
             Router.start();
             Router.go('/');
         }
     } catch (e) {
-        console.log(e)
         Router.start();
-        if (Boolean(store.getState().user)) {
-            Router.go('/profile');
+        if(Boolean(store.getState().user)) {
+            Router.go('/messenger');
         } else {
             Router.go('/');
         }

@@ -1,57 +1,77 @@
-type ValidationRule = (value: string) => boolean;
+import { Block } from 'core/Block';
 
-const validationRules: Record<string, ValidationRule> = {
-    messageForm: (value: string) => /.+/.test(value),
-    loginForm: (value: string) => /^(?=.*[a-zA-Z])[a-zA-Z0-9_-]{3,20}$/.test(value),
-    phoneForm: (value: string) => /^\+?\d{10,15}$/.test(value),
-    emailForm: (value: string) => /^[A-Za-z0-9]+([_\-.][A-Za-z0-9]+)*@[A-Za-z0-9]+([_\-.][A-Za-z0-9]+)*\.[A-Za-z]+$/.test(value),
-    nameForm: (value: string) => /^[А-ЯЁA-Zа-яёa-z-]+$/.test(value),
-    passwordForm: (value: string) => /^(?=.*[A-Z])(?=.*\d).{8,40}$/.test(value),
-    nicknameForm: (value: string) => /.+/.test(value),
-};
+const regExpForEmail = /^[A-Z0-9-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i;
+const regExpForName = /^[A-ZА-Я]{1}[A-ZА-Яa-zа-я-]{2,30}$/;
+const regExpForPhone = /^[0-9+]{1}[0-9]{9,14}$/;
+const regExpForPassword = /^((?=.*[0-9])(?=.*[A-Z])[0-9a-zA-Z]{8,40})$/;
+const regExpForLogin = /^[A-Za-z][A-Za-z0-9_-]{2,19}$/;
 
-export function validate(
-    value: string,
-    rules: string[],
-    event: HTMLElement
-): void {
-    deleteError(event);
-
-    for (const rule of rules) {
-        const [ruleName, ruleParam, ruleMessage] = rule.split(':');
-        if (!(validationRules[ruleName]?.(value, Number(ruleParam)) || validationRules[ruleName]?.(value))) {
-            let message = ruleMessage;
-
-            if (ruleName === 'loginForm') {
-                message = `От 3 до 20 символов. Логин не может состоять из цифр, иметь спец. символы кроме дефиса и нижнего подчервикания.`
-            } else if (ruleName === 'passwordForm') {
-                message = `От 8 до 40 символов, только латинские буквы, должен содержать как минимум одну заглавную букву и цифру`;
-            } else if (ruleName === 'nameForm') {
-                message = `Только латинские или русские буквы, не должно иметь спец символы кроме дефиса`;
-            } else if (ruleName === 'emailForm') {
-                message = 'Такой email не подойдет';
-            } else if (ruleName === 'phoneForm') {
-                message = `от 10 до 15 символов, только цифры`;
-            } else if (ruleName === 'nicknameForm') {
-                message = `Имя в чате не должно быть пустым`;
-            } else if (ruleName === 'messageForm') {
-                message = 'Поле не может быть пустым';
-            }
-
-            displayError(event, message);
+export function validationLogin(elem: any) {
+    const inputValue = (elem.element!.children[1] as HTMLInputElement).value;
+    if(inputValue !== '') {
+        const result = regExpForLogin.test(inputValue);
+        if(result === true) {
+            (elem.element!.children[2] as HTMLLabelElement).textContent = '';
+            (elem.element!.children[1] as HTMLInputElement).style.color = "#000000";
+        } else {
+            (elem.element!.children[2] as HTMLLabelElement).textContent = 'Можно использовать буквы, цифры, дефис, нижнее подчеркивание, первой должна быть буква';
+            (elem.element!.children[1] as HTMLInputElement).style.color = "#FF2F2F";
         }
     }
 }
 
-export function displayError(event: HTMLElement, errorMessage: string) {
-    const next = event.target.nextSibling;
-    const err = document.createElement('span');
-    err.innerText = <string>errorMessage;
-    next.tagName !== 'SPAN' && event.currentTarget.parentNode.insertBefore(err, event.target.nextSibling);
-    console.log(errorMessage);
+export function validationPassword(elem: any) {
+    const inputValue = (elem.element!.children[1] as HTMLInputElement).value;
+    if(inputValue !== '') {
+        const result = regExpForPassword.test(inputValue);
+        if(result === true) {
+            (elem.element!.children[2] as HTMLLabelElement).textContent = '';
+            (elem.element!.children[1] as HTMLInputElement).style.color = "#000000";
+        } else {
+            (elem.element!.children[2] as HTMLLabelElement).textContent = 'Минимальная длина 8 символов, обязательно хотя бы одна цифра и заглавная буква';
+            (elem.element!.children[1] as HTMLInputElement).style.color = "#FF2F2F";
+        }
+    }
 }
 
-export function deleteError(event) {
-    const next = event.target.nextSibling;
-    next.tagName === 'SPAN' && event.currentTarget.parentNode.removeChild(next);
+export function validationPhone(elem: any) {
+    const inputValue = (elem.element!.children[1] as HTMLInputElement).value;
+    if(inputValue !== '') {
+        const result = regExpForPhone.test(inputValue);
+        if(result === true) {
+            (elem.element!.children[2] as HTMLLabelElement).textContent = '';
+            (elem.element!.children[1] as HTMLInputElement).style.color = "#000000";
+        } else {
+            (elem.element!.children[2] as HTMLLabelElement).textContent = 'Необходимо использовать цифры без пробелов или дефиса, может начинаться с плюса';
+            (elem.element!.children[1] as HTMLInputElement).style.color = "#FF2F2F";
+        }
+    }
+}
+
+export function validationName(elem: any) {
+    const inputValue = (elem.element!.children[1] as HTMLInputElement).value;
+    if(inputValue !== '') {
+        const result = regExpForName.test(inputValue);
+        if(result === true) {
+            (elem.element!.children[2] as HTMLLabelElement).textContent = '';
+            (elem.element!.children[1] as HTMLInputElement).style.color = "#000000";
+        } else {
+            (elem.element!.children[2] as HTMLLabelElement).textContent = 'Можно использовать только буквы и дефис, первая буква должна быть заглавной';
+            (elem.element!.children[1] as HTMLInputElement).style.color = "#FF2F2F";
+        }
+    }
+}
+
+export function validationEmail(elem: any) {
+    const inputValue = (elem.element!.children[1] as HTMLInputElement).value;
+    if(inputValue !== '') {
+        const result = regExpForEmail.test(inputValue);
+        if(result === true) {
+            (elem.element!.children[2] as HTMLLabelElement).textContent = '';
+            (elem.element!.children[1] as HTMLInputElement).style.color = "#000000";
+        } else {
+            (elem.element!.children[2] as HTMLLabelElement).textContent = 'Введите корректный email адрес';
+            (elem.element!.children[1] as HTMLInputElement).style.color = "#FF2F2F";
+        }
+    }
 }
