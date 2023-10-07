@@ -2,7 +2,7 @@
  - Шаблонизатор: Handlebars
  - Язык: Typescript
  - Стили: PostCSS
- - Макет: [Figma](https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?type=design&node-id=0%3A1&t=hfjoJ2DkvLkAWvLC-1) (стандартный, ничего не меняла)
+ - Макет: [Figma](https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?type=design&node-id=0%3A1&t=hfjoJ2DkvLkAWvLC-1)
  - Сборщик: Parcel
  - Анализаторы кода: Eslint и Stylelint
  - Обмен сообщениями: WebSocket
