@@ -36,7 +36,6 @@ class EditPassword extends Block {
             const formData = new FormData(form);
             this.oldPassword = formData.get('oldPassword');
             this.newPassword = formData.get('newPassword');
-            const newPasswordAgain = formData.get('newPasswordAgain');
             this.onSubmit();
         } 
         }  });

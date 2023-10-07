@@ -1,2 +1,10 @@
 /dist
-/node_modules 
+/node_modules
+mochaSetup.js
+server.js
+Block.test.ts
+Fetch.test.ts
+Router.test.ts
+webpack.config.sjs
+webpack.dev.config.cjs
+webpack.prod.config.cjs

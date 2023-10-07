@@ -12,5 +12,8 @@
     "noUnusedLocals": true,                          
     "noUnusedParameters": true,                                   
     "skipLibCheck": true                                 
+  },
+  "ts-node": {
+    "files": true
   }
 }

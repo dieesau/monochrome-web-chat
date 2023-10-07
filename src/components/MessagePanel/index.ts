@@ -57,13 +57,13 @@ class MessagePanel extends Block {
                         (document.getElementById('error') as HTMLLabelElement).textContent = 'Введите сообщение';
                     } else {
                         (document.getElementById('error') as HTMLLabelElement).textContent = '';
+                        const form = document.getElementById('form') as HTMLFormElement;
+                        const formData = new FormData(form);
+                        const message = formData.get('message');
+                        const chatID = this.props.currentChat;
+                        ChatsController.sendMessage(chatID, message as string);
+                        (document.getElementById('message') as HTMLInputElement).value = '';
                     }
-                    const form = document.getElementById('form') as HTMLFormElement;
-                    const formData = new FormData(form);
-                    const message = formData.get('message');
-                    const chatID = this.props.currentChat;
-                    ChatsController.sendMessage(chatID, message as string);
-                    (document.getElementById('message') as HTMLInputElement).value = '';
                 }
             }
         });
